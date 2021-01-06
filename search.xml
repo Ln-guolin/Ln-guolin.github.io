@@ -295,7 +295,7 @@
   <entry>
     <title>Hexo博客搭建</title>
     <url>/2020/06/14/blog-create-hexo/</url>
-    <content><![CDATA[<p>Hexo是基于Nodejs的轻量级博客系统，使用Markdown来渲染文章，体积小、快速、简洁、安装简单。</p>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Hexo是基于Nodejs的轻量级博客系统，使用Markdown来渲染文章，体积小、快速、简洁、安装简单。</p>
 <a id="more"></a>
 <h4 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h4><p>安装git和node工具，前置工作，不做详细介绍</p>
 <h5 id="安装yarn"><a href="#安装yarn" class="headerlink" title="安装yarn"></a>安装yarn</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure>
