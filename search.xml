@@ -478,55 +478,6 @@
       </tags>
   </entry>
   <entry>
-    <title>docker三剑客之docker-compose</title>
-    <url>/2018/09/16/docker-docker-compose/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>docker-compose是编排容器的利器，特别是涉及多个容器的运行时，不需要敲各个容器的启动参数，环境变量，容器命名，指定不同容器的链接参数等等一系列的操作，通过docker-compose，它可以轻松完成容器编排，并且提供了scale扩容功能。</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在github官网上有提供安装的方式，直接下载二进制包进行安装即可。</p>
-<p>下载地址：<a href="https://github.com/docker/compose/releases/">https://github.com/docker/compose/releases/</a> </p>
-<p>安装命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<p>然后，验证安装情况：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>官网有介绍，如果你们mac或者windows用户，正常情况，你安装了docker客户端就默认安装了docker-compose。</p>
-<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>如果使用curl安装的，通过以下命令卸载Docker Compose ：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<h4 id="实战练习"><a href="#实战练习" class="headerlink" title="实战练习"></a>实战练习</h4><h5 id="构建redis数据库"><a href="#构建redis数据库" class="headerlink" title="构建redis数据库"></a>构建redis数据库</h5><p>1，我们使用redis来做演示，首先，我们先看看命令行直接运行redis的方式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 6379:6379 --name some-redis -v &#x2F;my&#x2F;own&#x2F;redis&#x2F;data:&#x2F;data redis:3.2.9 redis-server --appendonly yes --requirepass &quot;password123&quot;</span><br></pre></td></tr></table></figure>
-<p>2，然后，我们使用docker-compose来参考构建，我们创建一个docker-compose.yml文件，并添下面的内容：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">   <span class="attr">redis:</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">redis:3.2.9</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">data:/my/own/redis/data</span></span><br><span class="line">     <span class="attr">ports:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">     <span class="attr">command:</span>  <span class="string">redis-server</span> <span class="string">--appendonly</span> <span class="literal">yes</span> <span class="string">--requirepass</span> <span class="string">&quot;password123&quot;</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">data:</span></span><br></pre></td></tr></table></figure>
-<p>3，执行构建</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>下面列出几个时常会用到的docker-compose命令 </p>
-<p><strong>config</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose config </span><br><span class="line">解释：验证compose yml文件格式是否正确，若正确则显示配置，若格式错误显示错误原因 </span><br></pre></td></tr></table></figure>
-<p><strong>ps</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法： docker-compose ps [options] [SERVICE...] </span><br><span class="line">解释：列出项目中目前的所有容器。 选项： -q 只打印容器的 ID 信息 </span><br></pre></td></tr></table></figure>
-<p><strong>images</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose images </span><br><span class="line">解释：列出项目中的所有容器镜像 </span><br></pre></td></tr></table></figure>
-<p><strong>up</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose up [options] [SERVICE...] </span><br><span class="line">解释：通常使用“docker-compose up -d”自动完成包括构建镜像，（重新）创建服务，启动服务，并关联服务相关容器的一系列操作，在后台运行。 </span><br><span class="line">如果服务容器已经存在，up 将会尝试停止容器，然后重新创建，以保证新启动的服务匹配 docker-compose.yml文件的最新内容。 </span><br><span class="line">如果用户不希望容器被停止并重新创建，可以添加“--no-recreate”指令，将只会启动处于停止状态的容器，而忽略已经运行的服务。 </span><br><span class="line">如果用户只想重新部署某个服务，可以使用 docker-compose up --no-deps -d &lt;SERVICE_NAME&gt; 来重新创建服务并后台停止旧服务，启动新服务，并不会影响到其所依赖的服务。 </span><br><span class="line">选项： </span><br><span class="line">  -d 在后台运行服务容器 </span><br><span class="line">  --no-color 不使用颜色来区分不同的服务的控制台输出 </span><br><span class="line">  --no-deps 不启动服务所链接的容器 </span><br><span class="line">  --force-recreate 强制重新创建容器，不能与 --no-recreate 同时使用 </span><br><span class="line">  --no-recreate 如果容器已经存在了，则不重新创建，不能与 --force-recreate 同时使用 </span><br><span class="line">  --no-build 不自动构建缺失的服务镜像 </span><br><span class="line">  -t, --timeout TIMEOUT 停止容器时候的超时（默认为 10 秒） </span><br></pre></td></tr></table></figure>
-<p><strong>start</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose start [SERVICE...] </span><br><span class="line">解释：启动已经存在的服务容器。 </span><br></pre></td></tr></table></figure>
-<p><strong>stop</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法： docker-compose stop [options] [SERVICE...] </span><br><span class="line">解释：停止已经处于运行状态的容器，但不删除它 选项： -t, --timeout TIMEOUT 停止容器时候的超时（默认为 10 秒 ）</span><br></pre></td></tr></table></figure>
-<p><strong>restart</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose restart [options] [SERVICE...] </span><br><span class="line">解释：重启项目中的服务 </span><br></pre></td></tr></table></figure>
-<p><strong>rm</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose rm [options] [SERVICE...] </span><br><span class="line">解释：删除所有（停止状态的）服务容器，推荐先执行 docker-compose stop 命令来停止容器。 </span><br><span class="line">选项： -f, --force 强制直接删除，包括非停止状态的容器。尽量不要使用该选项 -v 删除容器所挂载的数据卷 </span><br></pre></td></tr></table></figure>
-<p><strong>logs</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose logs [options] [SERVICE...] </span><br><span class="line">解释：查看服务容器的输出。默认情况下，docker-compose 将对不同的服务输出使用不同的颜色来区分,可以通过 --no-color 来关闭颜色。 </span><br></pre></td></tr></table></figure>
-<p><strong>scale</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose scale [options] [SERVICE&#x3D;NUM...] </span><br><span class="line">解释：设置指定服务运行的容器个数，一般在需要进行扩容的时候用到，通过 service&#x3D;num 的参数来设置数量。</span><br><span class="line">例如： docker-compose scale mysql&#x3D;3 redis&#x3D;2 将启动3个容器运行mysql服务，2个容器运行redis服务。</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
-        <tag>docker-compose</tag>
-        <tag>docker三剑客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker三剑客之docker-machine</title>
     <url>/2018/09/16/docker-docker-machine/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>你可以用docker machine来做什么？<br>1，在mac和windows平台上安装和运行docker<br>2，提供和管理多个远程docker主机<br>3，提供swarm集群管理 </p>
@@ -607,101 +558,57 @@
         <category>docker</category>
       </categories>
       <tags>
-        <tag>docker三剑客</tag>
         <tag>docker-machine</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>docker三剑客之docker-swarm</title>
-    <url>/2018/09/17/docker-docker-swarm/</url>
-    <content><![CDATA[<h4 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h4><p>集群模式是指在DOCKER引擎中嵌入的集群管理和编排特征。当你初始化一个新的集群或加入一个集群的节点时，DOCKER引擎以集群模式运行。        <br>为什么需要集群？为了解决单机瓶颈，从一到多，部署多份，从而构成“集群”。<br>从单机到集群，代码基本无需修改，仅仅是服务器的扩容，简单直接的提升了服务器的处理能力。  <br>      <br>参考文档：<a href="https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm">https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm</a></p>
-<h4 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h4><p>我们使用docker-machine来创建几个主机，用来演示swarm集群的创建。</p>
-<p>1，先创建3台主机，我这里的命名是：h1 / h2 / h3，用其中的一台主机作为Leader，初始化swarm集群，并管理节点。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h1</span><br><span class="line"></span><br><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h2</span><br><span class="line"></span><br><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h3</span><br></pre></td></tr></table></figure>
-<p>查看创建好的3台主机：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ls</span><br></pre></td></tr></table></figure>
-<p>输出： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS_ </span><br><span class="line">_h1 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.5:2376 v18.06.1-ce_ </span><br><span class="line">_h2 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.6:2376 v18.06.1-ce_ </span><br><span class="line">_h3 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.7:2376 v18.06.1-ce_</span><br></pre></td></tr></table></figure>
-<p>2，登录h1主机，初始化swarm集群</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ssh h1</span><br><span class="line">docker swarm init --advertise-addr 192.168.64.5</span><br></pre></td></tr></table></figure>
-<p>输出： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_Swarm initialized: </span><br><span class="line">current node (h78ft6qqs27xxi1af9lw7w4tk) is now a manager.</span><br><span class="line">To add a worker to this swarm, run the following </span><br><span class="line"></span><br><span class="line">command:</span><br><span class="line">docker swarm join --token SWMTKN-1-2lk16l2cjvporghr3g1kg6orjrotq682axu2yc0kjm5aepvois-br6bpyng0bvqg2jqcn4ud3cvs 192.168.64.5:2377 </span><br><span class="line"></span><br><span class="line">To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.</span><br></pre></td></tr></table></figure>
-
-<p>3，分别登录<strong>h2</strong>和<strong>h3</strong>，执行上面输出的join命令的添加到swarm集群</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm join --token SWMTKN-1-2lk16l2cjvporghr3g1kg6orjrotq682axu2yc0kjm5aepvois-br6bpyng0bvqg2jqcn4ud3cvs 192.168.64.5:2377</span><br></pre></td></tr></table></figure>
-<p>输出： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_This node joined a swarm as a worker.</span><br></pre></td></tr></table></figure>
-<p>后续，如果需要查看添加节点的token和命令，可以使用如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm join-token worker</span><br></pre></td></tr></table></figure>
-<p>4，重新登录h1，查看集群节点情况，<strong>Leader</strong>表示主节点</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ssh h1</span><br><span class="line"></span><br><span class="line">docker node ls</span><br></pre></td></tr></table></figure>
-<p>输出： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS ENGINE VERSION_ </span><br><span class="line">_h78ft6qqs27xxi1af9lw7w4tk h1 Ready Active Leader 18.06.1-ce_ </span><br><span class="line">_ifo2uegzz9s1619t72gnz64yk h2 Ready Active 18.06.1-ce_ </span><br><span class="line">_fysd1bc0knxvgkk53604joje2 h3 Ready Active 18.06.1-ce_ </span><br></pre></td></tr></table></figure>
-
-<p>5，移除集群节点 </p>
-<p>a，在需要退出的节点上操作下面命令down掉节点，如需强制退出，可添加参数“-f”，如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm leave -f</span><br></pre></td></tr></table></figure>
-<p>b，到主节点上“docker node ls”列出所有节点，根据id使用命令“docker node rm <id>”删除节点即可，如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker node rm &lt;ID&gt;</span><br></pre></td></tr></table></figure>
-<p> </p>
-<h4 id="服务部署与扩容"><a href="#服务部署与扩容" class="headerlink" title="服务部署与扩容"></a>服务部署与扩容</h4><p>如何将我们的容器部署到swarm集群？下面我们使用nginx来演示。</p>
-<p>1，登录主机，执行下面的命令部署nginx服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service create --replicas 3 -p 80:80 --name nginx nginx:1.15-alpine</span><br></pre></td></tr></table></figure>
-<p>2，查看服务部署情况，可以使用下面两个命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service ls</span><br><span class="line">或</span><br><span class="line">docker service ps nginx</span><br></pre></td></tr></table></figure>
-<p>输出： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_ID NAME MODE REPLICAS IMAGE PORTS_ </span><br><span class="line">_26fd9ljhbjsp nginx replicated 3&#x2F;3 nginx:1.15-alpine \*:80-&gt;80&#x2F;tcp_ </span><br></pre></td></tr></table></figure>
-<p>现在，我们已经可以在浏览器输入任意一个节点的地址，访问部署到nginx服务了，如访问：“<a href="http://192.168.64.5”/">http://192.168.64.5”</a> </p>
-<p>3，服务扩容，我们通过scale命令可以针对集群的服务进行扩容和缩减，控制的数量为当前集群的指定服务数量，一切都变的那么自然，可控。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service scale nginx=3</span><br></pre></td></tr></table></figure>
-<h4 id="集群监控平台"><a href="#集群监控平台" class="headerlink" title="集群监控平台"></a>集群监控平台</h4><p>监控是必须的，这使得 我们可以更直接的观察和管理 集群中的节点和服务，这里我们选用的是Docker Swarm Visualizer，简单直观。</p>
-<p>登录管理节点，执行下面的命令添加监控：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service create \\</span><br><span class="line">--name=viz \\</span><br><span class="line">--publish=8080:8080/tcp \\</span><br><span class="line">--constraint=node.role==manager \\</span><br><span class="line">--mount=<span class="built_in">type</span>=<span class="built_in">bind</span>,src=/var/run/docker.sock,dst=/var/run/docker.sock \\</span><br><span class="line">dockersamples/visualizer</span><br></pre></td></tr></table></figure>
-<p>监控部署后，我们就可以通过浏览器访问地址查看：<a href="http://192.168.64.7:8080/">http://192.168.64.7:8080/</a><br>监控效果： </p>
-<p align="center">
-    <a href="#"><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/docker/viz.jpg" width="450px"></a>
-</p>
-
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p><strong>docker swarm</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker swarm init #初始化集群 </span><br><span class="line">docker swarm join-token worker #查看工作节点 </span><br><span class="line">token docker swarm join-token manager #查看管理节点 </span><br><span class="line">token docker swarm join #加入集群中 </span><br></pre></td></tr></table></figure>
-<p><strong>docker node</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker node ls #查看所有集群节点 </span><br><span class="line">docker node rm #删除某个节点（-f强制删除） </span><br><span class="line">docker node inspect #查看节点详情 </span><br><span class="line">docker node demote #节点降级，由管理节点降级为工作节点 </span><br><span class="line">docker node promote #节点升级，由工作节点升级为管理节点 </span><br><span class="line">docker node update #更新节点 </span><br><span class="line">docker node ps #查看节点中的 Task 任务 </span><br></pre></td></tr></table></figure>
-<p><strong>docker service</strong> </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker service create #部署服务 </span><br><span class="line">docker service inspect #查看服务详情 </span><br><span class="line">docker service logs #产看某个服务日志 </span><br><span class="line">docker service ls #查看所有服务详情 </span><br><span class="line">docker service rm #删除某个服务（-f强制删除） </span><br><span class="line">docker service scale #设置某个服务个数 </span><br><span class="line">docker service update #更新某个服务</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>docker</category>
-      </categories>
-      <tags>
         <tag>docker三剑客</tag>
-        <tag>docker-swarm</tag>
       </tags>
   </entry>
   <entry>
-    <title>Docker部署SkyWalking，以及Java项目集成</title>
-    <url>/2020/10/01/docker_install_skywalking/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>SkyWalking是一个开源的APM(应用程序性能监视器)系统，专为微服务、云原生和基于容器的体系结构而设计。<br>功能包括对Cloud Native体系结构中的分布式系统的监视，跟踪，诊断，报警等，具体功能明细参见<a href="http://skywalking.apache.org/">官网</a>。</p>
-<h4 id="部署skywalking"><a href="#部署skywalking" class="headerlink" title="部署skywalking"></a>部署skywalking</h4><p>本文使用docker-compose的方式进行的部署，官网默认的docker示例是es数据库，es占用内存大，示例机器内存不足，我们直接使用自带的h2数据库来保存skywalking产生的数据。</p>
-<p>docker-compose.yml：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">skywalking-oap:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/skywalking-oap-server:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">11800</span><span class="string">:11800</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">12800</span><span class="string">:12800</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD-SHELL&quot;</span>, <span class="string">&quot;/skywalking/bin/swctl&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">40s</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">JAVA_OPTS:</span> <span class="string">&quot;-Xms512m -Xmx512m&quot;</span></span><br><span class="line">  <span class="attr">skywalking-ui:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/skywalking-ui:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">skywalking-ui</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3380</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">SW_OAP_ADDRESS:</span> <span class="string">skywalking-oap:12800</span></span><br></pre></td></tr></table></figure>
-<p>执行docker-compose命令，运行skywalking：</p>
+    <title>docker三剑客之docker-compose</title>
+    <url>/2018/09/16/docker-docker-compose/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>docker-compose是编排容器的利器，特别是涉及多个容器的运行时，不需要敲各个容器的启动参数，环境变量，容器命名，指定不同容器的链接参数等等一系列的操作，通过docker-compose，它可以轻松完成容器编排，并且提供了scale扩容功能。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在github官网上有提供安装的方式，直接下载二进制包进行安装即可。</p>
+<p>下载地址：<a href="https://github.com/docker/compose/releases/">https://github.com/docker/compose/releases/</a> </p>
+<p>安装命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo curl -L <span class="string">&quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-<span class="subst">$(uname -s)</span>-<span class="subst">$(uname -m)</span>&quot;</span> -o /usr/<span class="built_in">local</span>/bin/docker-compose</span><br><span class="line"></span><br><span class="line">sudo chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>然后，验证安装情况：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+<p>官网有介绍，如果你们mac或者windows用户，正常情况，你安装了docker客户端就默认安装了docker-compose。</p>
+<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>如果使用curl安装的，通过以下命令卸载Docker Compose ：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo rm /usr/<span class="built_in">local</span>/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<h4 id="实战练习"><a href="#实战练习" class="headerlink" title="实战练习"></a>实战练习</h4><h5 id="构建redis数据库"><a href="#构建redis数据库" class="headerlink" title="构建redis数据库"></a>构建redis数据库</h5><p>1，我们使用redis来做演示，首先，我们先看看命令行直接运行redis的方式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run -d -p 6379:6379 --name some-redis -v &#x2F;my&#x2F;own&#x2F;redis&#x2F;data:&#x2F;data redis:3.2.9 redis-server --appendonly yes --requirepass &quot;password123&quot;</span><br></pre></td></tr></table></figure>
+<p>2，然后，我们使用docker-compose来参考构建，我们创建一个docker-compose.yml文件，并添下面的内容：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">   <span class="attr">redis:</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">redis:3.2.9</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">data:/my/own/redis/data</span></span><br><span class="line">     <span class="attr">ports:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">     <span class="attr">command:</span>  <span class="string">redis-server</span> <span class="string">--appendonly</span> <span class="literal">yes</span> <span class="string">--requirepass</span> <span class="string">&quot;password123&quot;</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">data:</span></span><br></pre></td></tr></table></figure>
+<p>3，执行构建</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
 
-<h4 id="下载skywalking-agent-jar"><a href="#下载skywalking-agent-jar" class="headerlink" title="下载skywalking-agent.jar"></a>下载skywalking-agent.jar</h4><p>下载地址：<a href="http://skywalking.apache.org/downloads/">http://skywalking.apache.org/downloads/</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /home/pro-mall/</span><br><span class="line"><span class="built_in">cd</span> /home/pro-mall/</span><br><span class="line">wget https://mirror.bit.edu.cn/apache/skywalking/8.1.0/apache-skywalking-apm-8.1.0.tar.gz</span><br><span class="line">tar -zxvf apache-skywalking-apm-8.1.0.tar.gz </span><br><span class="line"></span><br><span class="line"><span class="comment"># skywalking-agent.jar文件完整地址</span></span><br><span class="line">/home/pro-mall/apache-skywalking-apm-bin/agent/skywalking-agent.jar</span><br><span class="line"><span class="comment"># agent参数介绍</span></span><br><span class="line">/home/pro-mall/apache-skywalking-apm-bin/agent/config/agent.config</span><br></pre></td></tr></table></figure>
-<h4 id="项目使用"><a href="#项目使用" class="headerlink" title="项目使用"></a>项目使用</h4><p>以agent的方式启动，对代码没有侵入性，直接在启动命令上指定javaagent即可。</p>
-<p>启动命令javaagent参数添加：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -javaagent:/home/pro-mall/apache-skywalking-apm-bin/agent/skywalking-agent.jar -DSW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800 -DSW_AGENT_NAME=pro-mall -jar xxxxx</span><br></pre></td></tr></table></figure>
-<p>启动程序后，登录skywalking查看监控情况：<a href="http://localhost:3380/">http://localhost:3380</a></p>
-<p>监控面板：<br><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/skywalking/sk1.png" alt="监控面板"></p>
-<p>调用链路：<br><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/skywalking/sk2.png" alt="调用链路"></p>
-]]></content>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>下面列出几个时常会用到的docker-compose命令 </p>
+<p><strong>config</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose config </span><br><span class="line">解释：验证compose yml文件格式是否正确，若正确则显示配置，若格式错误显示错误原因 </span><br></pre></td></tr></table></figure>
+<p><strong>ps</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法： docker-compose ps [options] [SERVICE...] </span><br><span class="line">解释：列出项目中目前的所有容器。 选项： -q 只打印容器的 ID 信息 </span><br></pre></td></tr></table></figure>
+<p><strong>images</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose images </span><br><span class="line">解释：列出项目中的所有容器镜像 </span><br></pre></td></tr></table></figure>
+<p><strong>up</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose up [options] [SERVICE...] </span><br><span class="line">解释：通常使用“docker-compose up -d”自动完成包括构建镜像，（重新）创建服务，启动服务，并关联服务相关容器的一系列操作，在后台运行。 </span><br><span class="line">如果服务容器已经存在，up 将会尝试停止容器，然后重新创建，以保证新启动的服务匹配 docker-compose.yml文件的最新内容。 </span><br><span class="line">如果用户不希望容器被停止并重新创建，可以添加“--no-recreate”指令，将只会启动处于停止状态的容器，而忽略已经运行的服务。 </span><br><span class="line">如果用户只想重新部署某个服务，可以使用 docker-compose up --no-deps -d &lt;SERVICE_NAME&gt; 来重新创建服务并后台停止旧服务，启动新服务，并不会影响到其所依赖的服务。 </span><br><span class="line">选项： </span><br><span class="line">  -d 在后台运行服务容器 </span><br><span class="line">  --no-color 不使用颜色来区分不同的服务的控制台输出 </span><br><span class="line">  --no-deps 不启动服务所链接的容器 </span><br><span class="line">  --force-recreate 强制重新创建容器，不能与 --no-recreate 同时使用 </span><br><span class="line">  --no-recreate 如果容器已经存在了，则不重新创建，不能与 --force-recreate 同时使用 </span><br><span class="line">  --no-build 不自动构建缺失的服务镜像 </span><br><span class="line">  -t, --timeout TIMEOUT 停止容器时候的超时（默认为 10 秒） </span><br></pre></td></tr></table></figure>
+<p><strong>start</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose start [SERVICE...] </span><br><span class="line">解释：启动已经存在的服务容器。 </span><br></pre></td></tr></table></figure>
+<p><strong>stop</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法： docker-compose stop [options] [SERVICE...] </span><br><span class="line">解释：停止已经处于运行状态的容器，但不删除它 选项： -t, --timeout TIMEOUT 停止容器时候的超时（默认为 10 秒 ）</span><br></pre></td></tr></table></figure>
+<p><strong>restart</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose restart [options] [SERVICE...] </span><br><span class="line">解释：重启项目中的服务 </span><br></pre></td></tr></table></figure>
+<p><strong>rm</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose rm [options] [SERVICE...] </span><br><span class="line">解释：删除所有（停止状态的）服务容器，推荐先执行 docker-compose stop 命令来停止容器。 </span><br><span class="line">选项： -f, --force 强制直接删除，包括非停止状态的容器。尽量不要使用该选项 -v 删除容器所挂载的数据卷 </span><br></pre></td></tr></table></figure>
+<p><strong>logs</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose logs [options] [SERVICE...] </span><br><span class="line">解释：查看服务容器的输出。默认情况下，docker-compose 将对不同的服务输出使用不同的颜色来区分,可以通过 --no-color 来关闭颜色。 </span><br></pre></td></tr></table></figure>
+<p><strong>scale</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：docker-compose scale [options] [SERVICE&#x3D;NUM...] </span><br><span class="line">解释：设置指定服务运行的容器个数，一般在需要进行扩容的时候用到，通过 service&#x3D;num 的参数来设置数量。</span><br><span class="line">例如： docker-compose scale mysql&#x3D;3 redis&#x3D;2 将启动3个容器运行mysql服务，2个容器运行redis服务。</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>docker</category>
-        <category>java</category>
       </categories>
       <tags>
-        <tag>SkyWalking</tag>
-        <tag>监控</tag>
+        <tag>docker三剑客</tag>
+        <tag>docker-compose</tag>
       </tags>
   </entry>
   <entry>
@@ -754,14 +661,52 @@
       </tags>
   </entry>
   <entry>
-    <title>Git记住密码</title>
+    <title>Docker部署SkyWalking，以及Java项目集成</title>
+    <url>/2020/10/01/docker_install_skywalking/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>SkyWalking是一个开源的APM(应用程序性能监视器)系统，专为微服务、云原生和基于容器的体系结构而设计。<br>功能包括对Cloud Native体系结构中的分布式系统的监视，跟踪，诊断，报警等，具体功能明细参见<a href="http://skywalking.apache.org/">官网</a>。</p>
+<h4 id="部署skywalking"><a href="#部署skywalking" class="headerlink" title="部署skywalking"></a>部署skywalking</h4><p>本文使用docker-compose的方式进行的部署，官网默认的docker示例是es数据库，es占用内存大，示例机器内存不足，我们直接使用自带的h2数据库来保存skywalking产生的数据。</p>
+<p>docker-compose.yml：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3.8&#x27;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">skywalking-oap:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/skywalking-oap-server:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">11800</span><span class="string">:11800</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">12800</span><span class="string">:12800</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">test:</span> [<span class="string">&quot;CMD-SHELL&quot;</span>, <span class="string">&quot;/skywalking/bin/swctl&quot;</span>]</span><br><span class="line">      <span class="attr">interval:</span> <span class="string">30s</span></span><br><span class="line">      <span class="attr">timeout:</span> <span class="string">10s</span></span><br><span class="line">      <span class="attr">retries:</span> <span class="number">3</span></span><br><span class="line">      <span class="attr">start_period:</span> <span class="string">40s</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">JAVA_OPTS:</span> <span class="string">&quot;-Xms512m -Xmx512m&quot;</span></span><br><span class="line">  <span class="attr">skywalking-ui:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">apache/skywalking-ui:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">skywalking-ui</span></span><br><span class="line">    <span class="attr">depends_on:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">links:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">skywalking-oap</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">3380</span><span class="string">:8080</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">SW_OAP_ADDRESS:</span> <span class="string">skywalking-oap:12800</span></span><br></pre></td></tr></table></figure>
+<p>执行docker-compose命令，运行skywalking：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<h4 id="下载skywalking-agent-jar"><a href="#下载skywalking-agent-jar" class="headerlink" title="下载skywalking-agent.jar"></a>下载skywalking-agent.jar</h4><p>下载地址：<a href="http://skywalking.apache.org/downloads/">http://skywalking.apache.org/downloads/</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /home/pro-mall/</span><br><span class="line"><span class="built_in">cd</span> /home/pro-mall/</span><br><span class="line">wget https://mirror.bit.edu.cn/apache/skywalking/8.1.0/apache-skywalking-apm-8.1.0.tar.gz</span><br><span class="line">tar -zxvf apache-skywalking-apm-8.1.0.tar.gz </span><br><span class="line"></span><br><span class="line"><span class="comment"># skywalking-agent.jar文件完整地址</span></span><br><span class="line">/home/pro-mall/apache-skywalking-apm-bin/agent/skywalking-agent.jar</span><br><span class="line"><span class="comment"># agent参数介绍</span></span><br><span class="line">/home/pro-mall/apache-skywalking-apm-bin/agent/config/agent.config</span><br></pre></td></tr></table></figure>
+<h4 id="项目使用"><a href="#项目使用" class="headerlink" title="项目使用"></a>项目使用</h4><p>以agent的方式启动，对代码没有侵入性，直接在启动命令上指定javaagent即可。</p>
+<p>启动命令javaagent参数添加：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -javaagent:/home/pro-mall/apache-skywalking-apm-bin/agent/skywalking-agent.jar -DSW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800 -DSW_AGENT_NAME=pro-mall -jar xxxxx</span><br></pre></td></tr></table></figure>
+<p>启动程序后，登录skywalking查看监控情况：<a href="http://localhost:3380/">http://localhost:3380</a></p>
+<p>监控面板：<br><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/skywalking/sk1.png" alt="监控面板"></p>
+<p>调用链路：<br><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/skywalking/sk2.png" alt="调用链路"></p>
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>SkyWalking</tag>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git记住密码设置</title>
     <url>/2020/06/15/git-remember-password/</url>
-    <content><![CDATA[<h4 id="保存密码"><a href="#保存密码" class="headerlink" title="保存密码"></a>保存密码</h4><p>进入git目录，执行下面的命令</p>
+    <content><![CDATA[<h4 id="设置git记住密码"><a href="#设置git记住密码" class="headerlink" title="设置git记住密码"></a>设置git记住密码</h4><p>1，记住密码设置</p>
+<p>进入git目录，执行下面的命令，长期保存账号信息：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
-<p>临时记住15分钟</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config –global credential.helper cache</span><br></pre></td></tr></table></figure>
-<h4 id="清除密码"><a href="#清除密码" class="headerlink" title="清除密码"></a>清除密码</h4><p>同样，执行如下命令即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo git config --system --<span class="built_in">unset</span> credential.helper</span><br></pre></td></tr></table></figure>]]></content>
+<p>或临时记住15分钟：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -–global credential.helper cache</span><br></pre></td></tr></table></figure>
+<p>注意：git config配置生效范围<br>| 参数       | 描述                                   | 级别     |<br>| ———- | ————————————– | ——– |<br>| <code>--system</code> | 表示针对整个系统的全局设置             | 最大范围 |<br>| <code>-–global</code> | 表示针对当前计算机登录的用户的全局设置 | 中等范围 |<br>| <code>--local</code>  | 表示针对当前仓库设置                   | 最小范围 |</p>
+<p>2，查看当前的git配置信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">credential.helper&#x3D;osxkeychain</span><br><span class="line">user.name&#x3D;xxxxxxx</span><br><span class="line">user.email&#x3D;xxxx@xxxx.cn</span><br><span class="line">core.autocrlf&#x3D;false</span><br><span class="line">core.repositoryformatversion&#x3D;0</span><br><span class="line">core.filemode&#x3D;true</span><br><span class="line">core.bare&#x3D;false</span><br><span class="line">core.logallrefupdates&#x3D;true</span><br><span class="line">core.ignorecase&#x3D;true</span><br><span class="line">core.precomposeunicode&#x3D;true</span><br><span class="line">remote.origin.url&#x3D;https:&#x2F;&#x2F;github.com&#x2F;soilove4ln&#x2F;xxxx.git</span><br><span class="line">remote.origin.fetch&#x3D;+refs&#x2F;heads&#x2F;*:refs&#x2F;remotes&#x2F;origin&#x2F;*</span><br></pre></td></tr></table></figure>
+<p>如，需修改当前仓库的某一项，可使用如下方式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;soilove4ln&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="清除记住密码的设置"><a href="#清除记住密码的设置" class="headerlink" title="清除记住密码的设置"></a>清除记住密码的设置</h4><p>执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo git config --global --<span class="built_in">unset</span> credential.helper</span><br></pre></td></tr></table></figure>
+<p>如果你需要清除其他参数设置，同样的，使用上述方法即可。</p>
+]]></content>
       <categories>
         <category>git</category>
       </categories>
@@ -1312,6 +1257,71 @@
       </categories>
       <tags>
         <tag>拆分文件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>docker三剑客之docker-swarm</title>
+    <url>/2018/09/17/docker-docker-swarm/</url>
+    <content><![CDATA[<h4 id="扯淡"><a href="#扯淡" class="headerlink" title="扯淡"></a>扯淡</h4><p>集群模式是指在DOCKER引擎中嵌入的集群管理和编排特征。当你初始化一个新的集群或加入一个集群的节点时，DOCKER引擎以集群模式运行。        <br>为什么需要集群？为了解决单机瓶颈，从一到多，部署多份，从而构成“集群”。<br>从单机到集群，代码基本无需修改，仅仅是服务器的扩容，简单直接的提升了服务器的处理能力。  <br>      <br>参考文档：<a href="https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm">https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm</a></p>
+<h4 id="集群搭建"><a href="#集群搭建" class="headerlink" title="集群搭建"></a>集群搭建</h4><p>我们使用docker-machine来创建几个主机，用来演示swarm集群的创建。</p>
+<p>1，先创建3台主机，我这里的命名是：h1 / h2 / h3，用其中的一台主机作为Leader，初始化swarm集群，并管理节点。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h1</span><br><span class="line"></span><br><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h2</span><br><span class="line"></span><br><span class="line">docker-machine create -d xhyve --xhyve-boot2docker-url ~/.docker/machine/cache/boot2docker.iso --engine-registry-mirror https://registry.docker-cn.com h3</span><br></pre></td></tr></table></figure>
+<p>查看创建好的3台主机：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ls</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_NAME ACTIVE DRIVER STATE URL SWARM DOCKER ERRORS_ </span><br><span class="line">_h1 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.5:2376 v18.06.1-ce_ </span><br><span class="line">_h2 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.6:2376 v18.06.1-ce_ </span><br><span class="line">_h3 - xhyve Running tcp:&#x2F;&#x2F;192.168.64.7:2376 v18.06.1-ce_</span><br></pre></td></tr></table></figure>
+<p>2，登录h1主机，初始化swarm集群</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ssh h1</span><br><span class="line">docker swarm init --advertise-addr 192.168.64.5</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_Swarm initialized: </span><br><span class="line">current node (h78ft6qqs27xxi1af9lw7w4tk) is now a manager.</span><br><span class="line">To add a worker to this swarm, run the following </span><br><span class="line"></span><br><span class="line">command:</span><br><span class="line">docker swarm join --token SWMTKN-1-2lk16l2cjvporghr3g1kg6orjrotq682axu2yc0kjm5aepvois-br6bpyng0bvqg2jqcn4ud3cvs 192.168.64.5:2377 </span><br><span class="line"></span><br><span class="line">To add a manager to this swarm, run &#39;docker swarm join-token manager&#39; and follow the instructions.</span><br></pre></td></tr></table></figure>
+
+<p>3，分别登录<strong>h2</strong>和<strong>h3</strong>，执行上面输出的join命令的添加到swarm集群</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm join --token SWMTKN-1-2lk16l2cjvporghr3g1kg6orjrotq682axu2yc0kjm5aepvois-br6bpyng0bvqg2jqcn4ud3cvs 192.168.64.5:2377</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_This node joined a swarm as a worker.</span><br></pre></td></tr></table></figure>
+<p>后续，如果需要查看添加节点的token和命令，可以使用如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm join-token worker</span><br></pre></td></tr></table></figure>
+<p>4，重新登录h1，查看集群节点情况，<strong>Leader</strong>表示主节点</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker-machine ssh h1</span><br><span class="line"></span><br><span class="line">docker node ls</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_ID HOSTNAME STATUS AVAILABILITY MANAGER STATUS ENGINE VERSION_ </span><br><span class="line">_h78ft6qqs27xxi1af9lw7w4tk h1 Ready Active Leader 18.06.1-ce_ </span><br><span class="line">_ifo2uegzz9s1619t72gnz64yk h2 Ready Active 18.06.1-ce_ </span><br><span class="line">_fysd1bc0knxvgkk53604joje2 h3 Ready Active 18.06.1-ce_ </span><br></pre></td></tr></table></figure>
+
+<p>5，移除集群节点 </p>
+<p>a，在需要退出的节点上操作下面命令down掉节点，如需强制退出，可添加参数“-f”，如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker swarm leave -f</span><br></pre></td></tr></table></figure>
+<p>b，到主节点上“docker node ls”列出所有节点，根据id使用命令“docker node rm <id>”删除节点即可，如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker node rm &lt;ID&gt;</span><br></pre></td></tr></table></figure>
+<p> </p>
+<h4 id="服务部署与扩容"><a href="#服务部署与扩容" class="headerlink" title="服务部署与扩容"></a>服务部署与扩容</h4><p>如何将我们的容器部署到swarm集群？下面我们使用nginx来演示。</p>
+<p>1，登录主机，执行下面的命令部署nginx服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service create --replicas 3 -p 80:80 --name nginx nginx:1.15-alpine</span><br></pre></td></tr></table></figure>
+<p>2，查看服务部署情况，可以使用下面两个命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service ls</span><br><span class="line">或</span><br><span class="line">docker service ps nginx</span><br></pre></td></tr></table></figure>
+<p>输出： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">_ID NAME MODE REPLICAS IMAGE PORTS_ </span><br><span class="line">_26fd9ljhbjsp nginx replicated 3&#x2F;3 nginx:1.15-alpine \*:80-&gt;80&#x2F;tcp_ </span><br></pre></td></tr></table></figure>
+<p>现在，我们已经可以在浏览器输入任意一个节点的地址，访问部署到nginx服务了，如访问：“<a href="http://192.168.64.5”/">http://192.168.64.5”</a> </p>
+<p>3，服务扩容，我们通过scale命令可以针对集群的服务进行扩容和缩减，控制的数量为当前集群的指定服务数量，一切都变的那么自然，可控。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service scale nginx=3</span><br></pre></td></tr></table></figure>
+<h4 id="集群监控平台"><a href="#集群监控平台" class="headerlink" title="集群监控平台"></a>集群监控平台</h4><p>监控是必须的，这使得 我们可以更直接的观察和管理 集群中的节点和服务，这里我们选用的是Docker Swarm Visualizer，简单直观。</p>
+<p>登录管理节点，执行下面的命令添加监控：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker service create \\</span><br><span class="line">--name=viz \\</span><br><span class="line">--publish=8080:8080/tcp \\</span><br><span class="line">--constraint=node.role==manager \\</span><br><span class="line">--mount=<span class="built_in">type</span>=<span class="built_in">bind</span>,src=/var/run/docker.sock,dst=/var/run/docker.sock \\</span><br><span class="line">dockersamples/visualizer</span><br></pre></td></tr></table></figure>
+<p>监控部署后，我们就可以通过浏览器访问地址查看：<a href="http://192.168.64.7:8080/">http://192.168.64.7:8080/</a><br>监控效果： </p>
+<p align="center">
+    <a href="#"><img src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/docker/viz.jpg" width="450px"></a>
+</p>
+
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p><strong>docker swarm</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker swarm init #初始化集群 </span><br><span class="line">docker swarm join-token worker #查看工作节点 </span><br><span class="line">token docker swarm join-token manager #查看管理节点 </span><br><span class="line">token docker swarm join #加入集群中 </span><br></pre></td></tr></table></figure>
+<p><strong>docker node</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker node ls #查看所有集群节点 </span><br><span class="line">docker node rm #删除某个节点（-f强制删除） </span><br><span class="line">docker node inspect #查看节点详情 </span><br><span class="line">docker node demote #节点降级，由管理节点降级为工作节点 </span><br><span class="line">docker node promote #节点升级，由工作节点升级为管理节点 </span><br><span class="line">docker node update #更新节点 </span><br><span class="line">docker node ps #查看节点中的 Task 任务 </span><br></pre></td></tr></table></figure>
+<p><strong>docker service</strong> </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker service create #部署服务 </span><br><span class="line">docker service inspect #查看服务详情 </span><br><span class="line">docker service logs #产看某个服务日志 </span><br><span class="line">docker service ls #查看所有服务详情 </span><br><span class="line">docker service rm #删除某个服务（-f强制删除） </span><br><span class="line">docker service scale #设置某个服务个数 </span><br><span class="line">docker service update #更新某个服务</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker三剑客</tag>
+        <tag>docker-swarm</tag>
       </tags>
   </entry>
 </search>
