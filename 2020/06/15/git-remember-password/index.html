@@ -3,7 +3,31 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure>
 <p>或临时记住15分钟：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -–global credential.helper cache</span><br></pre></td></tr></table></figure>
-<p>注意：git config配置生效范围<br>| 参数       | 描述                                   | 级别     |<br>| ———- | ————————————– | ——– |<br>| <code>--system</code> | 表示针对整个系统的全局设置             | 最大范围 |<br>| <code>-–global</code> | 表示针对当前计算机登录的用户的全局设置 | 中等范围 |<br>| <code>--local</code>  | 表示针对当前仓库设置                   | 最小范围 |</p>
+<p>注意：git config配置生效范围</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>级别</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--system</code></td>
+<td>表示针对整个系统的全局设置</td>
+<td>最大范围</td>
+</tr>
+<tr>
+<td><code>-–global</code></td>
+<td>表示针对当前计算机登录的用户的全局设置</td>
+<td>中等范围</td>
+</tr>
+<tr>
+<td><code>--local</code></td>
+<td>表示针对当前仓库设置</td>
+<td>最小范围</td>
+</tr>
+</tbody></table>
 <p>2，查看当前的git配置信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
 <p>输出如下：</p>
