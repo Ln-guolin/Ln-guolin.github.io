@@ -728,7 +728,7 @@
 <p>如，需修改当前仓库的某一项，可使用如下方式：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --<span class="built_in">local</span> user.name <span class="string">&quot;soilove4ln&quot;</span></span><br></pre></td></tr></table></figure>
 <h4 id="清除记住密码的设置"><a href="#清除记住密码的设置" class="headerlink" title="清除记住密码的设置"></a>清除记住密码的设置</h4><p>执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo git config --global --<span class="built_in">unset</span> credential.helper</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> credential.helper</span><br></pre></td></tr></table></figure>
 <p>如果你需要清除其他参数设置，同样的，使用上述方法即可。</p>
 ]]></content>
       <categories>
