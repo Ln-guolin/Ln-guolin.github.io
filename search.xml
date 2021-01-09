@@ -1376,7 +1376,7 @@
     <title>python-使用PIL批量压缩图片</title>
     <url>/2021/01/09/py-image-compres/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;今天迁移文件，需要对大量的图片进行压缩，用PS一张一张的处理效率特别低，而在网上的在线工具批量处理几乎都是收费的，所以干脆用python脚本来处理，一劳永逸，以后也方便自己使用。</p>
-<h4 id="安装PIL图像处理库"><a href="#安装PIL图像处理库" class="headerlink" title="安装PIL图像处理库"></a>安装PIL图像处理库</h4><p><code>PIL</code>是一个<code>Python</code>图像处理库，<code>Pillow</code>是<code>PIL</code>的一个很友好的分支，所以，我们可以通过安装<code>Pillow</code>来使用<code>PIL</code>。</p>
+<h4 id="安装PIL图像处理库"><a href="#安装PIL图像处理库" class="headerlink" title="安装PIL图像处理库"></a>安装PIL图像处理库</h4><p><code>PIL</code>是一个<code>Python</code>图像处理库，<code>Pillow</code>是<code>PIL</code>的一个很友好的分支，所以，我们可以通过安装<code>Pillow</code>来使用<code>PIL</code>。文档：<a href="https://pillow-cn.readthedocs.io/zh_CN/latest/index.html">pillow官网</a></p>
 <p>我使用的是mac电脑，以下命令在mac上执行。</p>
 <p>1，安装pip工具，如果已经安装，跳过</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo easy_install pip</span><br></pre></td></tr></table></figure>
