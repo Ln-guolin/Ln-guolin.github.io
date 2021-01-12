@@ -1390,4 +1390,44 @@
         <tag>压缩图片</tag>
       </tags>
   </entry>
+  <entry>
+    <title>mac charles抓包工具安装设置</title>
+    <url>/2020/08/01/mac-charles-install/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;作为开发，一款抓包工具，自然是必不可少。<code>charles</code>是一款非常优秀的抓包工具，收费，但也仅仅是启动多了一些广告和使用时间限制，所以基本不会影响使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">演示环境：</span><br><span class="line">电脑：mac</span><br><span class="line">手机：iphone</span><br></pre></td></tr></table></figure>
+<h4 id="工具安装和设置"><a href="#工具安装和设置" class="headerlink" title="工具安装和设置"></a>工具安装和设置</h4><h5 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h5><p>官方下载地址：<a href="https://www.charlesproxy.com/download/">https://www.charlesproxy.com/download/</a></p>
+<p>mac选择dmg格式的安装文件，下载后，直接双击安装即可。</p>
+<p>安装完成后，直接打开可能会提示权限只读的错误信息，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Charles cannot configure your proxy settings while it is on a read-only volume.</span><br></pre></td></tr></table></figure>
+<p>执行下面的命令进行授权即可：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chown -R root <span class="string">&quot;/Applications/Charles.app/Contents/Resources&quot;</span></span><br><span class="line">sudo chmod -R u+s <span class="string">&quot;/Applications/Charles.app/Contents/Resources&quot;</span></span><br></pre></td></tr></table></figure>
+<h5 id="工具安装破解"><a href="#工具安装破解" class="headerlink" title="工具安装破解"></a>工具安装破解</h5><p>工具安装后，其实不需要去操心付费或破解的事，它提供的免费使用机制 其实足够我们正常使用。</p>
+<p>不过，伟大的互联网民众里，总有那么些人，为了让我们有更好的体验而努力😂。<br>到 <a href="https://zhile.io/2017/07/07/charles-proxy-usage-and-license.html">zhile.io站点</a> 获取注册码。</p>
+<p>注册码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Registered Name:  https:&#x2F;&#x2F;zhile.io</span><br><span class="line">License Key:   48891cf209c6d32bf4</span><br></pre></td></tr></table></figure>
+
+<h5 id="工具代理设置"><a href="#工具代理设置" class="headerlink" title="工具代理设置"></a>工具代理设置</h5><p>打开菜单：<code>Proxy &gt;&gt; SSL Proxying Settings...</code></p>
+<p>修改<code>SSL Proxying</code>配置：</p>
+<p>1，钩上 <code>Enable SSL Proxying</code> 配置</p>
+<p>2，添加 <code>Location</code>配置，Host和Port都不要填，直接新增，这样的结果是：<code>*</code> 匹配所有，如图：</p>
+<image src="https://soilove.oss-cn-hangzhou.aliyuncs.com/32e/charles/charles01.png" width=500>
+
+<h4 id="手机证书安装"><a href="#手机证书安装" class="headerlink" title="手机证书安装"></a>手机证书安装</h4><p>1，打开 charles工具的证书安装菜单，选择手机证书安装。</p>
+<p>具体路径：<code>Help &gt;&gt; SSL Proxying &gt;&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser</code></p>
+<p>点击后，会提示你如下信息，根据提示进行下一步配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Configure your device to use Charles as its HTTP proxy on 172.18.4.105:8888, </span><br><span class="line">then browse to chls.pro&#x2F;ssl to download and install the certificate.</span><br><span class="line"></span><br><span class="line">Note that on iOS 10 and later you must then go into Settings &gt; General &gt; About </span><br><span class="line">&gt; Certificate Trust Settings and enable the Charles certificate to be trusted.</span><br></pre></td></tr></table></figure>
+<p>2，手机添加代理，首先确保iphone和mac连接的是同一个Wi-Fi，然后到Wi-Fi设置里添加代理配置，ip和端口就是上面所提示的：<code>xx.xx.xx.xx:8888</code>。</p>
+<p>3，手机证书下载，浏览器打开网址：<code>chls.pro/ssl</code>，下载证书文件。</p>
+<p>4，手机证书安装，到路径：<code>设置 &gt;&gt; 通用 &gt;&gt; 描述文件</code>，选择 <code>Charles Proxy CA ***</code> 文件，点击<code>安装</code></p>
+<p>5，手机证书信任，到路径：<code>设置 &gt;&gt; 通用 &gt;&gt; 关于本机 &gt;&gt; 证书信任设置</code>，开启 <code>Charles Proxy CA ***</code> 证书即可。</p>
+<p>好了，到现在，所有配置就完成了，可以正常抓包了。</p>
+]]></content>
+      <categories>
+        <category>mac</category>
+      </categories>
+      <tags>
+        <tag>charles</tag>
+        <tag>抓包</tag>
+      </tags>
+  </entry>
 </search>
