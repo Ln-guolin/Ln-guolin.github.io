@@ -442,7 +442,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install gpg</span><br></pre></td></tr></table></figure>
 <p>2，生成密钥对，会提示输入姓名、邮箱等字段，其它直接回车，直到输入密码界面，密码一定要输入记牢，后面打包会进行验证</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
-<p>命令执行完成后，会输出公钥和私钥信息，一定要记录下来。万一忘记了可以“gpg –list-keys”提供公钥部分信息查询，输出如下：</p>
+<p>命令执行完成后，会输出公钥和私钥信息，一定要记录下来。万一忘记了可以“<code>gpg --list-keys</code>”提供公钥部分信息查询，输出如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gpg: &#x2F;Users&#x2F;chenguolin&#x2F;.gnupg&#x2F;trustdb.gpg：建立了信任度数据库</span><br><span class="line">gpg: 密钥 C49487317C8BXXXX 被标记为绝对信任</span><br><span class="line">gpg: 目录‘&#x2F;Users&#x2F;chenguolin&#x2F;.gnupg&#x2F;openpgp-revocs.d’已创建</span><br><span class="line">gpg: 吊销证书已被存储为‘&#x2F;Users&#x2F;chenguolin&#x2F;.gnupg&#x2F;openpgp-revocs.d&#x2F;E8C38745076F91ADEF800BADC49487317C8BXXXX.rev’</span><br><span class="line">公钥和私钥已经生成并被签名。</span><br><span class="line">pub   rsa2048 2020-04-14 [SC] [有效至：2022-04-14]</span><br><span class="line">      E8C38745076F91ADEF800BADC49487317C8BXXXX</span><br><span class="line">uid                      chenguolin &lt;root@soilove.cn&gt;</span><br><span class="line">sub   rsa2048 2020-04-14 [E] [有效至：2022-04-14]</span><br></pre></td></tr></table></figure>
 
 <p>3，推送公钥(pub)到远程服务，并验证是否推送完成</p>
