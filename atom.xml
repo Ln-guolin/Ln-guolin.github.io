@@ -45,9 +45,9 @@
     <link href="https://32e.co/2020/10/01/redis-0-catalog/"/>
     <id>https://32e.co/2020/10/01/redis-0-catalog/</id>
     <published>2020-10-01T15:59:59.000Z</published>
-    <updated>2021-01-25T06:28:49.285Z</updated>
+    <updated>2021-01-25T06:50:20.997Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写成一些文章汇总到以前的博客里面。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，并结合Redis官方文档，全部归纳在一起形成一个专栏，并取了一个名字：《Redis精通之路》[偷笑]</p><h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul><li><a href="">Redis精通之路-数据类型简介</a></li><li><a href="">Redis精通之路-使用流水线加速查询</a></li><li><a href="">Redis精通之路-发布与订阅</a></li><li><a href="">Redis精通之路-Lua脚本编制</a></li><li><a href="">Redis精通之路-内存优化</a></li><li><a href="https://32e.co/2020/10/01/redis-expire">Redis精通之路-Key的过期策略</a></li><li><a href="">Redis精通之路-淘汰策略</a></li><li><a href="">Redis精通之路-Redis事务的原理</a></li><li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li><li><a href="">Redis精通之路-分布式锁</a></li><li><a href="">Redis精通之路-数据分区的实现</a></li><li><a href="">Redis精通之路-内存碎片</a></li><li><a href="">Redis精通之路-认识Redis Stream(流)</a></li><li><a href="">Redis精通之路-键空间通知</a></li><li><a href="">Redis精通之路-模块编程</a></li><li><a href="">Redis精通之路-掌握Redis-cli命令行工具</a></li><li><a href="">Redis精通之路-主副本复制的相关知识</a></li><li><a href="">Redis精通之路-数据持久的两种方式</a></li><li><a href="">Redis精通之路-安全性</a></li><li><a href="">Redis精通之路-访问控制配置</a></li><li><a href="">Redis精通之路-客户端与服务器的通信加密</a></li><li><a href="">Redis精通之路-信号处理</a></li><li><a href="">Redis精通之路-延迟监控框架</a></li><li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis精通之路-单机部署Redis</a></li><li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis精通之路-Docker部署Redis</a></li><li><a href="">Redis精通之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li><li><a href="">Redis精通之路-如何搭建Redis集群</a></li><li><a href="">Redis精通之路-使用create-cluster脚本创建集群</a></li><li><a href="">Redis精通之路-在Docker容器环境中搭建集群</a></li><li><a href="">Redis精通之路-集群的主从模型和数据分片</a></li><li><a href="">Redis精通之路-Redis群集一致性保证</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写成一些文章汇总到以前的博客里面。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，并结合Redis官方文档，全部归纳在一起形成一个专栏，并取了一个名字：《Redis精通之路》[偷笑]</p><h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul><li><a href="">Redis精通之路-数据类型简介</a></li><li><a href="">Redis精通之路-使用流水线加速查询</a></li><li><a href="">Redis精通之路-发布与订阅</a></li><li><a href="">Redis精通之路-Lua脚本编制</a></li><li><a href="">Redis精通之路-内存优化</a></li><li><a href="https://32e.co/2020/10/01/redis-expire">Redis精通之路-Key的过期策略</a></li><li><a href="https://32e.co/2020/10/01/redis-maxmemory-policy">Redis精通之路-内存淘汰策略</a></li><li><a href="">Redis精通之路-Redis事务的原理</a></li><li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li><li><a href="">Redis精通之路-分布式锁</a></li><li><a href="">Redis精通之路-数据分区的实现</a></li><li><a href="">Redis精通之路-内存碎片</a></li><li><a href="">Redis精通之路-认识Redis Stream(流)</a></li><li><a href="">Redis精通之路-键空间通知</a></li><li><a href="">Redis精通之路-模块编程</a></li><li><a href="">Redis精通之路-掌握Redis-cli命令行工具</a></li><li><a href="">Redis精通之路-主副本复制的相关知识</a></li><li><a href="">Redis精通之路-数据持久的两种方式</a></li><li><a href="">Redis精通之路-安全性</a></li><li><a href="">Redis精通之路-访问控制配置</a></li><li><a href="">Redis精通之路-客户端与服务器的通信加密</a></li><li><a href="">Redis精通之路-信号处理</a></li><li><a href="">Redis精通之路-延迟监控框架</a></li><li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis精通之路-单机部署Redis</a></li><li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis精通之路-Docker部署Redis</a></li><li><a href="">Redis精通之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li><li><a href="">Redis精通之路-如何搭建Redis集群</a></li><li><a href="">Redis精通之路-使用create-cluster脚本创建集群</a></li><li><a href="">Redis精通之路-在Docker容器环境中搭建集群</a></li><li><a href="">Redis精通之路-集群的主从模型和数据分片</a></li><li><a href="">Redis精通之路-Redis群集一致性保证</a></li></ul>]]></content>
     
     
       
@@ -189,6 +189,38 @@
     <category term="缓存" scheme="https://32e.co/tags/%E7%BC%93%E5%AD%98/"/>
     
     <category term="nosql" scheme="https://32e.co/tags/nosql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis精通之路-内存淘汰策略</title>
+    <link href="https://32e.co/2020/10/01/redis-maxmemory-policy/"/>
+    <id>https://32e.co/2020/10/01/redis-maxmemory-policy/</id>
+    <published>2020-09-30T17:01:01.000Z</published>
+    <updated>2021-01-25T07:31:54.204Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;作为一台服务器，它的内存肯定是上限的，Redis是内存数据库，同时提供了数据持久的能力，大量的数据保存在内存中，当内存空间达到瓶颈，超出了物理内存的上限时，就会导致内存操作频繁与磁盘进行交换，从而导致性能产生断崖式是下滑。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;内存中保存的数据，大量的Key应该都并不是有用的，所以淘汰它们，释放所占空间，可以极大的提供内存的可使用量。</p><h4 id="内存淘汰设置"><a href="#内存淘汰设置" class="headerlink" title="内存淘汰设置"></a>内存淘汰设置</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的内存淘汰策略与<code>redis.conf</code>中配置的 <code>maxmemory</code>-最大内存设置 和 <code>maxmemory-policy</code>-淘汰策略设置 息息相关。</p><h5 id="maxmemory"><a href="#maxmemory" class="headerlink" title="maxmemory"></a>maxmemory</h5><p>最大内存设置，默认是注释的，表示不做任何限制，单位是<code>byte</code>字节。如果内存超出这个最大限制，Redis会根据配置的淘汰策略删除其他的KEY。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure><h5 id="maxmemory-policy"><a href="#maxmemory-policy" class="headerlink" title="maxmemory-policy"></a>maxmemory-policy</h5><p>内存达到<code>maxmemory</code>上限的时候，触发的淘汰策略，默认使用的策略为：<code>noeviction</code>，即不做任何处理，这种情况，会直接提示写操作错误。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory-policy &lt;策略&gt;</span><br></pre></td></tr></table></figure><p>注意：无论配置的是什么策略，都有可能不满足，所以，当没有合适的Key被逐出时，Redis都会在写入时返回操作错误</p><h4 id="支持的淘汰策略"><a href="#支持的淘汰策略" class="headerlink" title="支持的淘汰策略"></a>支持的淘汰策略</h4><table><thead><tr><th>策略名称</th><th>策略描述</th></tr></thead><tbody><tr><td>volatile-lru</td><td>仅限设置了失效时间的KEY，最近最少使用的</td></tr><tr><td>allkeys-lru</td><td>针对所有的KEY，最近最少使用的</td></tr><tr><td>volatile-lfu</td><td>仅限设置了失效时间的KEY，逐出使用频率最低的</td></tr><tr><td>allkeys-lfu</td><td>针对所有的KEY，逐出使用频率最低的</td></tr><tr><td>volatile-random</td><td>仅限设置了失效时间的KEY，随机逐出</td></tr><tr><td>allkeys-random</td><td>针对所有的KEY，随机逐出</td></tr><tr><td>volatile-ttl</td><td>仅限设置了失效时间的KEY，且优先逐出有效时间最短的(TTL)</td></tr><tr><td>noeviction</td><td>默认，不逐出任何内容，只返回一个写操作错误。</td></tr></tbody></table><p>注：以上所有策略都不是精确算法，而是近似算法，这样做的目的是为了节省内存。</p><p>而且，可以通过<code>maxmemory-samples</code>参数来调整它的速度或准确度，默认值为：5，表示Redis将检查5个Key并选择一个是最符合逐出条件的key。</p><p>值越大，检测精准度越高，但速度就越慢。正常来说，建议默认5个效果比较居中。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory-samples 5</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一台服务器，它的内存肯定是上限的，Redis是内存数据库，同时提供了数据持久的能力，大量</summary>
+      
+    
+    
+    
+    <category term="java" scheme="https://32e.co/categories/java/"/>
+    
+    <category term="redis" scheme="https://32e.co/categories/redis/"/>
+    
+    
+    <category term="分布式缓存" scheme="https://32e.co/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="缓存" scheme="https://32e.co/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="nosql" scheme="https://32e.co/tags/nosql/"/>
+    
+    <category term="淘汰策略" scheme="https://32e.co/tags/%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5/"/>
     
   </entry>
   
@@ -522,33 +554,6 @@
     
     
     <category term="ssh" scheme="https://32e.co/tags/ssh/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>堆和栈的区别</title>
-    <link href="https://32e.co/2020/06/27/read-head-stack/"/>
-    <id>https://32e.co/2020/06/27/read-head-stack/</id>
-    <published>2020-06-26T21:46:17.000Z</published>
-    <updated>2020-06-26T23:09:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>java的内存有两种：堆内存和栈内存，堆和栈都是用来在内存中存放数据的地方，只是各自的运行机制有所不同。</p><h4 id="什么是堆"><a href="#什么是堆" class="headerlink" title="什么是堆"></a>什么是堆</h4><p>堆，是运行时数据区，通过new等指令建立的对象从堆中分配空间，然后通过GC垃圾回收器来进行销毁。</p><p>堆的内存空间大小，是由java自己在运行时动态分配的，不需要我们指定设置。不过，也因此导致对的存取速度相对比较慢。</p><p>下面的案例，存放在堆中：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer num = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br></pre></td></tr></table></figure><h4 id="什么是栈"><a href="#什么是栈" class="headerlink" title="什么是栈"></a>什么是栈</h4><p>栈，主要存放一些基本数据类型的变量和对象的引用，栈的数据是可以共享的。</p><p>基本数量类型：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte，short，int，long，float，double，boolean，char</span><br></pre></td></tr></table></figure><p>栈的内存空间大小，在程序编译时，就指定确认下来。所以栈的存取速度比堆快，而且仅次于寄存器。</p><p>下面的案例，存放在栈中：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer num = <span class="number">123</span>;</span><br></pre></td></tr></table></figure><h4 id="验证他们的区别？"><a href="#验证他们的区别？" class="headerlink" title="验证他们的区别？"></a>验证他们的区别？</h4><p>堆和栈，我们已经有了对它们了解，也认识了它们的区别，那么我们来看看如何去进行验证？</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 堆数据，每个new出来的对象都独立占用一块内存</span></span><br><span class="line">    Integer num_d_1 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line">    Integer num_d_2 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 栈数据，存放的是对象的引用</span></span><br><span class="line">    Integer num_z_1 = <span class="number">123</span>;</span><br><span class="line">    Integer num_z_2 = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 基本数据类型，存放在栈中</span></span><br><span class="line">    <span class="keyword">int</span> num_j_1 = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line">    <span class="keyword">int</span> num_j_2 = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;堆对象比较：&quot;</span> + (num_d_1 == num_d_2));</span><br><span class="line">    System.out.println(<span class="string">&quot;栈对象比较：&quot;</span> + (num_z_1 == num_z_2));</span><br><span class="line">    System.out.println(<span class="string">&quot;基本数据类型比较：&quot;</span> + (num_j_1 == num_j_2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>输出：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">堆对象比较：false</span><br><span class="line">栈对象比较：true</span><br><span class="line">基本数据类型比较：true</span><br></pre></td></tr></table></figure><p>上面的案例，诠释了它们的区别：<br>堆，每个new出来的对象都独立占用一块内存地址，所以两者不相等。<br>栈，因为上一个值存在，而直接指向了相同的内存地址，所以两者相等。<br>基本类型，存放的就直接是值，所以相等。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;java的内存有两种：堆内存和栈内存，堆和栈都是用来在内存中存放数据的地方，只是各自的运行机制有所不同。&lt;/p&gt;
-&lt;h4 id=&quot;什么是堆&quot;</summary>
-      
-    
-    
-    
-    <category term="java" scheme="https://32e.co/categories/java/"/>
-    
-    
-    <category term="堆" scheme="https://32e.co/tags/%E5%A0%86/"/>
-    
-    <category term="栈" scheme="https://32e.co/tags/%E6%A0%88/"/>
     
   </entry>
   
