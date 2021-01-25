@@ -1430,4 +1430,178 @@
         <tag>抓包</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Redis精通之路-使用Docker单机部署Redis</title>
+    <url>/2020/10/01/redis-docker-install/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;如果非要问怎么安装Redis最省心、最简单，那肯定要属<code>Docker</code>镜像安装了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;docker hub镜像仓库中，有无数的开发者贡献了无数的镜像，可供选择，只需要一行docker命令，即可快速完成部署。不过要注意的是，最好选择带有<code>OFFICIAL IMAGE</code>标志的官方镜像，安全可靠！</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Redis官方镜像仓库地址：https:&#x2F;&#x2F;hub.docker.com&#x2F;_&#x2F;redis</span><br></pre></td></tr></table></figure>
+
+<h4 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h4><h5 id="docker-run部署"><a href="#docker-run部署" class="headerlink" title="docker run部署"></a>docker run部署</h5><p><code>docker run</code>命令的作用是创建一个新的容器并运行一个命令，我们可以通过下面的命令快速启动Redis服务，以及指定相关的命令或自定义配置文件。</p>
+<p>指定参数启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name some-redis -d redis:6.0.9 redis-server --appendonly yes --requirepass <span class="string">&quot;password123&quot;</span></span><br></pre></td></tr></table></figure>
+<p>指定配置文件启动：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /myredis/conf:/usr/<span class="built_in">local</span>/etc/redis --name some-redis -d redis:6.0.9 redis-server /usr/<span class="built_in">local</span>/etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+<p>停止：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop some-redis</span><br></pre></td></tr></table></figure>
+<p>重启：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker start some-redis</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-compose部署"><a href="#docker-compose部署" class="headerlink" title="docker-compose部署"></a>docker-compose部署</h5><p><code>docker-compose</code>是docker的自己家的服务编排工具，主要是用来构建多个有关联的服务，通过它，让我们管理容器变得更加的得心应手。不过，一般单个服务，我们也会选择用它来构建。</p>
+<p>docker-compose.yml：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># redis 缓存数据库</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">   <span class="attr">redis:</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">redis:6.0.9</span></span><br><span class="line">     <span class="attr">container_name:</span> <span class="string">some-redis</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">data:/my/own/redis/data</span></span><br><span class="line">     <span class="attr">ports:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">     <span class="attr">command:</span>  <span class="string">redis-server</span> <span class="string">--appendonly</span> <span class="literal">yes</span> <span class="string">--requirepass</span> <span class="string">&quot;password123&quot;</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">data:</span></span><br></pre></td></tr></table></figure>
+<p>构建启动：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>
+<p>重启：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose restart</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>docker</category>
+        <category>java</category>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>分布式缓存</tag>
+        <tag>缓存</tag>
+        <tag>nosql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis精通之路-单机部署Redis</title>
+    <url>/2020/10/01/redis-sign-install/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>单机部署redis非常简单，只需要安装好对应的依赖，然后下载redis源代码，使用<code>make</code>命令，提取和编译Redis即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装环境：centos</span><br><span class="line"></span><br><span class="line">安装方式参考：https:&#x2F;&#x2F;redis.io&#x2F;download</span><br><span class="line"></span><br><span class="line">安装包下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases</span><br></pre></td></tr></table></figure>
+<h4 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h4><h5 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h5><p>1，安装tcl、gcc等依赖</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install tcl</span><br><span class="line">yum install gcc - c++</span><br></pre></td></tr></table></figure>
+<p>2，升级gcc版本，并设置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install centos-release-scl</span><br><span class="line">yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source /opt/rh/devtoolset-9/enable&quot;</span> &gt;&gt; /etc/profile</span><br><span class="line">// 或 仅临时使用高版本的gcc</span><br><span class="line">scl <span class="built_in">enable</span> devtoolset-9 bash</span><br></pre></td></tr></table></figure>
+
+<h5 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h5><p>1，下载redis，到<code>http://download.redis.io/releases</code>选择所需的版本下载</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line">wget http://download.redis.io/releases/redis-6.0.9.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf redis-6.0.9.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> redis-6.0.9</span><br></pre></td></tr></table></figure>
+<p>2，执行make，完成安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">make install PREFIX=/usr/<span class="built_in">local</span>/redis</span><br></pre></td></tr></table></figure>
+<p>注：安装完成后，<code>redis-benchmark</code>、<code>redis-check-aof</code>、<code>redis-check-rdb</code>、<code>redis-cli</code>、<code>redis-sentinel</code>、<code>redis-server</code> 都会被复制到<code>/usr/local/redis/bin</code>目录下，可以直接使用。</p>
+<h5 id="最常用配置"><a href="#最常用配置" class="headerlink" title="最常用配置"></a>最常用配置</h5><p>0，为了方便管理，一般，我们会把配置文件也拷贝到<code>/usr/local/redis/bin/</code>目录下，然后修改此目录下的文件来进行相关配置。不过随你，哪都一样。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp /root/redis-6.0.9/redis.conf /usr/<span class="built_in">local</span>/redis/bin/redis.conf</span><br></pre></td></tr></table></figure>
+<p>1，配置redis访问密码，只需要修改<code>redis.conf</code>的<code>requirepass</code>参数即可。<br>设置redis访问密码: </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">requirepass &lt;密码&gt;</span><br></pre></td></tr></table></figure>
+<p> </p>
+<p>2，配置守护进程启动，同样在<code>redis.conf</code>文件中修改<code>daemonize yes</code>即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">daemonize yes</span><br></pre></td></tr></table></figure>
+<p> <br>3，最大内存设置，默认是注释的，单位是<code>byte</code>字节，如果超出这个最大限制，Redis会根据<code>逐出策略</code>尝试删除KEY，如果配置的是不逐出任何内容的策略，那么将直接提示写操作错误。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure>
+<p>逐出策略配置方式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">maxmemory-policy &lt;策略&gt;</span><br></pre></td></tr></table></figure>
+<p>可选策略：</p>
+<table>
+<thead>
+<tr>
+<th>策略名称</th>
+<th>策略描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>volatile-lru</td>
+<td>仅限设置了失效时间的KEY，最久没有使用的</td>
+</tr>
+<tr>
+<td>allkeys-lru</td>
+<td>针对所有的KEY，最久没有使用的</td>
+</tr>
+<tr>
+<td>volatile-lfu</td>
+<td>仅限设置了失效时间的KEY，逐出使用频率最少的</td>
+</tr>
+<tr>
+<td>allkeys-lfu</td>
+<td>针对所有的KEY，逐出使用频率最少的</td>
+</tr>
+<tr>
+<td>volatile-random</td>
+<td>仅限设置了失效时间的KEY，随机逐出</td>
+</tr>
+<tr>
+<td>allkeys-random</td>
+<td>针对所有的KEY，随机逐出</td>
+</tr>
+<tr>
+<td>volatile-ttl</td>
+<td>仅限设置了失效时间的KEY，且优先逐出有效时间最短的(TTL)</td>
+</tr>
+<tr>
+<td>noeviction</td>
+<td>默认，不逐出任何内容，只返回一个写操作错误。</td>
+</tr>
+</tbody></table>
+<p>4，配置访问限制，设置<code>bind</code>为<code>0.0.0.0</code>，并设置<code>protected-mode</code>为<code>no</code>使其bind生效，这样所有ip都可以访问</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+<p> <br>5，配置数据持久化方式，Redis在默认情况下是异步写入磁盘，所以断电可能会导致部分写操作丢失，所以一般情况下我们是开启AOF持久方式，将<code>appendonly</code>参数配置为<code>yes</code>即可，至于AOF和RDB两种方式的具体规则和区别，后续文章中会进行详细介绍。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+
+<h5 id="服务启动"><a href="#服务启动" class="headerlink" title="服务启动"></a>服务启动</h5><p>1，启动redis服务，只需要借助<code>redis-server</code>即可，如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/redis/bin/redis-server /usr/<span class="built_in">local</span>/redis/bin/redis.conf</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>分布式缓存</tag>
+        <tag>缓存</tag>
+        <tag>nosql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis精通之路-专栏目录</title>
+    <url>/2020/10/01/redis-0-catalog/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写一些文章汇总到以前的博客里面。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，全部归纳在一起形成一个专栏，并取了一个名字：&lt;Redis精通之路&gt;[偷笑]</p>
+<h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul>
+<li><a href="">Redis精通之路-数据类型简介</a></li>
+<li><a href="">Redis精通之路-使用流水线加速查询</a></li>
+<li><a href="">Redis精通之路-发布与订阅</a></li>
+<li><a href="">Redis精通之路-Lua脚本编制</a></li>
+<li><a href="">Redis精通之路-内存优化</a></li>
+<li><a href="">Redis精通之路-Key的过期策略</a></li>
+<li><a href="">Redis精通之路-淘汰策略</a></li>
+<li><a href="">Redis精通之路-Redis事务的原理</a></li>
+<li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li>
+<li><a href="">Redis精通之路-分布式锁</a></li>
+<li><a href="">Redis精通之路-数据分区的实现</a></li>
+<li><a href="">Redis精通之路-内存碎片</a></li>
+<li><a href="">Redis精通之路-认识Redis Stream(流)</a></li>
+<li><a href="">Redis精通之路-键空间通知</a></li>
+<li><a href="">Redis精通之路-模块编程</a></li>
+<li><a href="">Redis精通之路-掌握Redis-cli命令行工具</a></li>
+<li><a href="">Redis精通之路-主副本复制的相关知识</a></li>
+<li><a href="">Redis精通之路-数据持久的两种方式</a></li>
+<li><a href="">Redis精通之路-安全性</a></li>
+<li><a href="">Redis精通之路-访问控制配置</a></li>
+<li><a href="">Redis精通之路-客户端与服务器的通信加密</a></li>
+<li><a href="">Redis精通之路-信号处理</a></li>
+<li><a href="">Redis精通之路-延迟监控框架</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis精通之路-单机部署Redis</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis精通之路-Docker部署Redis</a></li>
+<li><a href="">Redis精通之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li>
+<li><a href="">Redis精通之路-如何搭建Redis集群</a></li>
+<li><a href="">Redis精通之路-使用create-cluster脚本创建集群</a></li>
+<li><a href="">Redis精通之路-在Docker容器环境中搭建集群</a></li>
+<li><a href="">Redis精通之路-集群的主从模型和数据分片</a></li>
+<li><a href="">Redis精通之路-Redis群集一致性保证</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>分布式缓存</tag>
+        <tag>缓存</tag>
+        <tag>nosql</tag>
+        <tag>redis</tag>
+      </tags>
+  </entry>
 </search>

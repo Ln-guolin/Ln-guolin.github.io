@@ -41,6 +41,38 @@
   </entry>
   
   <entry>
+    <title>Redis精通之路-专栏目录</title>
+    <link href="https://32e.co/2020/10/01/redis-0-catalog/"/>
+    <id>https://32e.co/2020/10/01/redis-0-catalog/</id>
+    <published>2020-10-01T15:59:59.000Z</published>
+    <updated>2021-01-25T03:39:17.508Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写一些文章汇总到以前的博客里面。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，全部归纳在一起形成一个专栏，并取了一个名字：&lt;Redis精通之路&gt;[偷笑]</p><h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul><li><a href="">Redis精通之路-数据类型简介</a></li><li><a href="">Redis精通之路-使用流水线加速查询</a></li><li><a href="">Redis精通之路-发布与订阅</a></li><li><a href="">Redis精通之路-Lua脚本编制</a></li><li><a href="">Redis精通之路-内存优化</a></li><li><a href="">Redis精通之路-Key的过期策略</a></li><li><a href="">Redis精通之路-淘汰策略</a></li><li><a href="">Redis精通之路-Redis事务的原理</a></li><li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li><li><a href="">Redis精通之路-分布式锁</a></li><li><a href="">Redis精通之路-数据分区的实现</a></li><li><a href="">Redis精通之路-内存碎片</a></li><li><a href="">Redis精通之路-认识Redis Stream(流)</a></li><li><a href="">Redis精通之路-键空间通知</a></li><li><a href="">Redis精通之路-模块编程</a></li><li><a href="">Redis精通之路-掌握Redis-cli命令行工具</a></li><li><a href="">Redis精通之路-主副本复制的相关知识</a></li><li><a href="">Redis精通之路-数据持久的两种方式</a></li><li><a href="">Redis精通之路-安全性</a></li><li><a href="">Redis精通之路-访问控制配置</a></li><li><a href="">Redis精通之路-客户端与服务器的通信加密</a></li><li><a href="">Redis精通之路-信号处理</a></li><li><a href="">Redis精通之路-延迟监控框架</a></li><li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis精通之路-单机部署Redis</a></li><li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis精通之路-Docker部署Redis</a></li><li><a href="">Redis精通之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li><li><a href="">Redis精通之路-如何搭建Redis集群</a></li><li><a href="">Redis精通之路-使用create-cluster脚本创建集群</a></li><li><a href="">Redis精通之路-在Docker容器环境中搭建集群</a></li><li><a href="">Redis精通之路-集群的主从模型和数据分片</a></li><li><a href="">Redis精通之路-Redis群集一致性保证</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写一些文章汇总到以前的博</summary>
+      
+    
+    
+    
+    <category term="java" scheme="https://32e.co/categories/java/"/>
+    
+    <category term="redis" scheme="https://32e.co/categories/redis/"/>
+    
+    
+    <category term="分布式缓存" scheme="https://32e.co/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="缓存" scheme="https://32e.co/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="nosql" scheme="https://32e.co/tags/nosql/"/>
+    
+    <category term="redis" scheme="https://32e.co/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker部署SkyWalking，以及Java项目集成</title>
     <link href="https://32e.co/2020/10/01/docker_install_skywalking/"/>
     <id>https://32e.co/2020/10/01/docker_install_skywalking/</id>
@@ -65,6 +97,68 @@
     <category term="SkyWalking" scheme="https://32e.co/tags/SkyWalking/"/>
     
     <category term="监控" scheme="https://32e.co/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis精通之路-使用Docker单机部署Redis</title>
+    <link href="https://32e.co/2020/10/01/redis-docker-install/"/>
+    <id>https://32e.co/2020/10/01/redis-docker-install/</id>
+    <published>2020-09-30T17:02:01.000Z</published>
+    <updated>2021-01-25T03:39:17.543Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;如果非要问怎么安装Redis最省心、最简单，那肯定要属<code>Docker</code>镜像安装了。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;docker hub镜像仓库中，有无数的开发者贡献了无数的镜像，可供选择，只需要一行docker命令，即可快速完成部署。不过要注意的是，最好选择带有<code>OFFICIAL IMAGE</code>标志的官方镜像，安全可靠！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Redis官方镜像仓库地址：https:&#x2F;&#x2F;hub.docker.com&#x2F;_&#x2F;redis</span><br></pre></td></tr></table></figure><h4 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h4><h5 id="docker-run部署"><a href="#docker-run部署" class="headerlink" title="docker run部署"></a>docker run部署</h5><p><code>docker run</code>命令的作用是创建一个新的容器并运行一个命令，我们可以通过下面的命令快速启动Redis服务，以及指定相关的命令或自定义配置文件。</p><p>指定参数启动：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name some-redis -d redis:6.0.9 redis-server --appendonly yes --requirepass <span class="string">&quot;password123&quot;</span></span><br></pre></td></tr></table></figure><p>指定配置文件启动：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /myredis/conf:/usr/<span class="built_in">local</span>/etc/redis --name some-redis -d redis:6.0.9 redis-server /usr/<span class="built_in">local</span>/etc/redis/redis.conf</span><br></pre></td></tr></table></figure><p>停止：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop some-redis</span><br></pre></td></tr></table></figure><p>重启：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start some-redis</span><br></pre></td></tr></table></figure><h5 id="docker-compose部署"><a href="#docker-compose部署" class="headerlink" title="docker-compose部署"></a>docker-compose部署</h5><p><code>docker-compose</code>是docker的自己家的服务编排工具，主要是用来构建多个有关联的服务，通过它，让我们管理容器变得更加的得心应手。不过，一般单个服务，我们也会选择用它来构建。</p><p>docker-compose.yml：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># redis 缓存数据库</span></span><br><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">   <span class="attr">redis:</span></span><br><span class="line">     <span class="attr">image:</span> <span class="string">redis:6.0.9</span></span><br><span class="line">     <span class="attr">container_name:</span> <span class="string">some-redis</span></span><br><span class="line">     <span class="attr">volumes:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">data:/my/own/redis/data</span></span><br><span class="line">     <span class="attr">ports:</span></span><br><span class="line">       <span class="bullet">-</span> <span class="string">&quot;6379:6379&quot;</span></span><br><span class="line">     <span class="attr">restart:</span> <span class="string">unless-stopped</span></span><br><span class="line">     <span class="attr">command:</span>  <span class="string">redis-server</span> <span class="string">--appendonly</span> <span class="literal">yes</span> <span class="string">--requirepass</span> <span class="string">&quot;password123&quot;</span></span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line">  <span class="attr">data:</span></span><br></pre></td></tr></table></figure><p>构建启动：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure><p>停止：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure><p>重启：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose restart</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如果非要问怎么安装Redis最省心、最简单，那肯定要属&lt;code&gt;Docker&lt;/code&gt;</summary>
+      
+    
+    
+    
+    <category term="docker" scheme="https://32e.co/categories/docker/"/>
+    
+    <category term="java" scheme="https://32e.co/categories/java/"/>
+    
+    <category term="redis" scheme="https://32e.co/categories/redis/"/>
+    
+    
+    <category term="分布式缓存" scheme="https://32e.co/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="缓存" scheme="https://32e.co/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="nosql" scheme="https://32e.co/tags/nosql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis精通之路-单机部署Redis</title>
+    <link href="https://32e.co/2020/10/01/redis-sign-install/"/>
+    <id>https://32e.co/2020/10/01/redis-sign-install/</id>
+    <published>2020-09-30T17:01:01.000Z</published>
+    <updated>2021-01-25T03:39:43.033Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>单机部署redis非常简单，只需要安装好对应的依赖，然后下载redis源代码，使用<code>make</code>命令，提取和编译Redis即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">安装环境：centos</span><br><span class="line"></span><br><span class="line">安装方式参考：https:&#x2F;&#x2F;redis.io&#x2F;download</span><br><span class="line"></span><br><span class="line">安装包下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases</span><br></pre></td></tr></table></figure><h4 id="部署过程"><a href="#部署过程" class="headerlink" title="部署过程"></a>部署过程</h4><h5 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h5><p>1，安装tcl、gcc等依赖</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install tcl</span><br><span class="line">yum install gcc - c++</span><br></pre></td></tr></table></figure><p>2，升级gcc版本，并设置环境变量</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum -y install centos-release-scl</span><br><span class="line">yum -y install devtoolset-9-gcc devtoolset-9-gcc-c++ devtoolset-9-binutils</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source /opt/rh/devtoolset-9/enable&quot;</span> &gt;&gt; /etc/profile</span><br><span class="line">// 或 仅临时使用高版本的gcc</span><br><span class="line">scl <span class="built_in">enable</span> devtoolset-9 bash</span><br></pre></td></tr></table></figure><h5 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h5><p>1，下载redis，到<code>http://download.redis.io/releases</code>选择所需的版本下载</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"></span><br><span class="line">wget http://download.redis.io/releases/redis-6.0.9.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf redis-6.0.9.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> redis-6.0.9</span><br></pre></td></tr></table></figure><p>2，执行make，完成安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install PREFIX=/usr/<span class="built_in">local</span>/redis</span><br></pre></td></tr></table></figure><p>注：安装完成后，<code>redis-benchmark</code>、<code>redis-check-aof</code>、<code>redis-check-rdb</code>、<code>redis-cli</code>、<code>redis-sentinel</code>、<code>redis-server</code> 都会被复制到<code>/usr/local/redis/bin</code>目录下，可以直接使用。</p><h5 id="最常用配置"><a href="#最常用配置" class="headerlink" title="最常用配置"></a>最常用配置</h5><p>0，为了方便管理，一般，我们会把配置文件也拷贝到<code>/usr/local/redis/bin/</code>目录下，然后修改此目录下的文件来进行相关配置。不过随你，哪都一样。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /root/redis-6.0.9/redis.conf /usr/<span class="built_in">local</span>/redis/bin/redis.conf</span><br></pre></td></tr></table></figure><p>1，配置redis访问密码，只需要修改<code>redis.conf</code>的<code>requirepass</code>参数即可。<br>设置redis访问密码: </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass &lt;密码&gt;</span><br></pre></td></tr></table></figure><p> </p><p>2，配置守护进程启动，同样在<code>redis.conf</code>文件中修改<code>daemonize yes</code>即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize yes</span><br></pre></td></tr></table></figure><p> <br>3，最大内存设置，默认是注释的，单位是<code>byte</code>字节，如果超出这个最大限制，Redis会根据<code>逐出策略</code>尝试删除KEY，如果配置的是不逐出任何内容的策略，那么将直接提示写操作错误。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure><p>逐出策略配置方式：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maxmemory-policy &lt;策略&gt;</span><br></pre></td></tr></table></figure><p>可选策略：</p><table><thead><tr><th>策略名称</th><th>策略描述</th></tr></thead><tbody><tr><td>volatile-lru</td><td>仅限设置了失效时间的KEY，最久没有使用的</td></tr><tr><td>allkeys-lru</td><td>针对所有的KEY，最久没有使用的</td></tr><tr><td>volatile-lfu</td><td>仅限设置了失效时间的KEY，逐出使用频率最少的</td></tr><tr><td>allkeys-lfu</td><td>针对所有的KEY，逐出使用频率最少的</td></tr><tr><td>volatile-random</td><td>仅限设置了失效时间的KEY，随机逐出</td></tr><tr><td>allkeys-random</td><td>针对所有的KEY，随机逐出</td></tr><tr><td>volatile-ttl</td><td>仅限设置了失效时间的KEY，且优先逐出有效时间最短的(TTL)</td></tr><tr><td>noeviction</td><td>默认，不逐出任何内容，只返回一个写操作错误。</td></tr></tbody></table><p>4，配置访问限制，设置<code>bind</code>为<code>0.0.0.0</code>，并设置<code>protected-mode</code>为<code>no</code>使其bind生效，这样所有ip都可以访问</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bind</span> 0.0.0.0</span><br><span class="line">protected-mode no</span><br></pre></td></tr></table></figure><p> <br>5，配置数据持久化方式，Redis在默认情况下是异步写入磁盘，所以断电可能会导致部分写操作丢失，所以一般情况下我们是开启AOF持久方式，将<code>appendonly</code>参数配置为<code>yes</code>即可，至于AOF和RDB两种方式的具体规则和区别，后续文章中会进行详细介绍。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes</span><br></pre></td></tr></table></figure><h5 id="服务启动"><a href="#服务启动" class="headerlink" title="服务启动"></a>服务启动</h5><p>1，启动redis服务，只需要借助<code>redis-server</code>即可，如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/redis/bin/redis-server /usr/<span class="built_in">local</span>/redis/bin/redis.conf</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;单机部署redis非常简单，只需要安装好对应的依赖，然后下载redis源代码，使用&lt;code&gt;make&lt;/code&gt;命令，提取和编译Redi</summary>
+      
+    
+    
+    
+    <category term="java" scheme="https://32e.co/categories/java/"/>
+    
+    <category term="redis" scheme="https://32e.co/categories/redis/"/>
+    
+    
+    <category term="分布式缓存" scheme="https://32e.co/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="缓存" scheme="https://32e.co/tags/%E7%BC%93%E5%AD%98/"/>
+    
+    <category term="nosql" scheme="https://32e.co/tags/nosql/"/>
     
   </entry>
   
@@ -462,86 +556,6 @@
     <category term="volatile" scheme="https://32e.co/tags/volatile/"/>
     
     <category term="LockSupport" scheme="https://32e.co/tags/LockSupport/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell拆分大文件</title>
-    <link href="https://32e.co/2020/06/20/shell-split/"/>
-    <id>https://32e.co/2020/06/20/shell-split/</id>
-    <published>2020-06-20T05:20:21.000Z</published>
-    <updated>2020-07-31T03:37:26.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="shell拆分大文件"><a href="#shell拆分大文件" class="headerlink" title="shell拆分大文件"></a>shell拆分大文件</h4><p>1，按照行数拆分</p><p>语法：split -行数 文件 /路径/前缀</p><p>示例：针对a.log文件进行拆分，每6行拆分一个文件，拆分的文件存放在/tmp下，按照new为前缀生成:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -6 a.log /tmp/new</span><br></pre></td></tr></table></figure><p>2，按照文件大小拆分</p><p>语法：split -b 大小 文件 /路径/前缀</p><p>示例：针对a.log文件进行拆分，每10m生成一个文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">split -b 10m a.log /tmp/new</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;shell拆分大文件&quot;&gt;&lt;a href=&quot;#shell拆分大文件&quot; class=&quot;headerlink&quot; title=&quot;shell拆分大文件&quot;&gt;&lt;/a&gt;shell拆分大文件&lt;/h4&gt;&lt;p&gt;1，按照行数拆分&lt;/p&gt;
-&lt;p&gt;语法：split -行数 文件 /路径/前缀</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="https://32e.co/categories/linux/"/>
-    
-    
-    <category term="拆分文件" scheme="https://32e.co/tags/%E6%8B%86%E5%88%86%E6%96%87%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>grep与cat、sed的结合</title>
-    <link href="https://32e.co/2020/06/20/shell-grep-cat-sed/"/>
-    <id>https://32e.co/2020/06/20/shell-grep-cat-sed/</id>
-    <published>2020-06-20T05:20:21.000Z</published>
-    <updated>2020-12-16T08:33:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="grep查找命令"><a href="#grep查找命令" class="headerlink" title="grep查找命令"></a>grep查找命令</h4><p>grep命令是linux系统中，最常用的文件字符串查找命令，职业生涯中，我们几乎离不开它。</p><p>下面是它最简单的用法，不过实际情况下，我们通常会添加很多参数或结合其他的命令去进行使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;&lt;pattern&gt;&quot; &lt;fileName&gt;</span><br></pre></td></tr></table></figure><p>常用命令参数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;fileName&gt;: 文件名称，多个文件使用空格隔开</span><br><span class="line">&lt;pattern&gt;: 匹配字符</span><br><span class="line">-n : 显示行号</span><br><span class="line">-i : 忽略字符大小写</span><br><span class="line">-l : 列出符合条件的文件名</span><br><span class="line">-r : 查找所有子目录</span><br><span class="line">-w : 只显示整行全匹配</span><br><span class="line">-o : 只显示匹配的关键字部分</span><br><span class="line">-A &lt;num&gt;: 关键字所在行、以及之后num行</span><br><span class="line">-B &lt;num&gt;: 关键字所在行、以及之前num行</span><br><span class="line">-C &lt;num&gt;: 关键字所在行、以及前后num行</span><br><span class="line">–include&#x3D;&quot;*.txt&quot;: 仅查找指定后缀的文件</span><br><span class="line">&gt; file: 将查询结果保存到文件中</span><br><span class="line">&gt;&gt; file: 将查询结果追加到文件中</span><br></pre></td></tr></table></figure><p>如，查询哪些文件中包含“ok”：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;ok&quot;</span> -r -l --include=<span class="string">&quot;*&quot;</span> ./</span><br></pre></td></tr></table></figure><h4 id="grep和cat-tail的结合"><a href="#grep和cat-tail的结合" class="headerlink" title="grep和cat/tail的结合"></a>grep和cat/tail的结合</h4><p>通过grep和cat/tail的结合，我们可以轻易的实现返回文件中的关键字所在行、以及附近指定行的内容，尤其是在我们查询程序日志的时候，用的非常多。</p><p>语法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;fileName&gt; | grep &lt;pattern&gt; &lt;cmd&gt;</span><br><span class="line">或</span><br><span class="line">tail -f &lt;fileName&gt; | grep &lt;pattern&gt; &lt;cmd&gt;</span><br></pre></td></tr></table></figure><p>参数说明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;fileName&gt;：文件名称，多个文件使用空格隔开</span><br><span class="line">&lt;pattern&gt;：匹配字符</span><br><span class="line">&lt;cmd&gt;：grep命令参数</span><br></pre></td></tr></table></figure><p>cat结合示例：在文件default.log中查找“异常”，并收集前后10行记录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat default.log | grep <span class="string">&quot;异常&quot;</span> -C 10</span><br></pre></td></tr></table></figure><p>tail结合示例：在文件default.log中查找“异常”，并进行实时收集</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f default.log | grep <span class="string">&quot;异常&quot;</span></span><br></pre></td></tr></table></figure><h4 id="grep和sed的结合"><a href="#grep和sed的结合" class="headerlink" title="grep和sed的结合"></a>grep和sed的结合</h4><p>sed命令是用来编辑一个或多个文件、简化对文件反复操作的神器，它和grep的结合令我们的文件操作起来更加的得心应手。<br>我们下面就来看看，它能给我们带来怎样的体验。</p><p>sed语法介绍:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed &lt;命令参数&gt; &lt;动作&gt; &lt;文件&gt;</span><br></pre></td></tr></table></figure><p>常用命令参数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i: 直接修改配合的文件内容</span><br><span class="line">-e: 不修改原文件，仅输出，通常可以和“&gt;或&gt;&gt;”命令结合，输出到新文件中</span><br></pre></td></tr></table></figure><p>常用动作说明：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s: 替换字符，替换指定的字符串，如：sed -i &#39;s&#x2F;匹配字符&#x2F;新字符&#x2F;g&#39; a.txt，末尾的&#x2F;g表示替换所有匹配的字符</span><br><span class="line">a: 新增行，在指定行或指定范围的行的下一行新增内容，如： sed -i &#39;2a\bbb&#39; a.txt</span><br><span class="line">i: 新增行，在指定行或指定范围的行的上一行新增内容，如： sed -i &#39;2i\bbb&#39; a.txt</span><br><span class="line">c: 替换行，替换指定行或指定范围的行的内容，如：sed -i &#39;3,5c\replacestr&#39; a.txt</span><br><span class="line">d: 删除行，删除指定行或指定范围的行，如： sed -i &#39;3d&#39; a.txt </span><br></pre></td></tr></table></figure><p>注: 动作前面的数字表示第几号，或者几行到几行</p><p>扩展案例：<br>查找某个文件中的关键字，并在其下新增一行数据</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;/关键字/a\新增的一行数据&#x27;</span> a.txt</span><br></pre></td></tr></table></figure><p>grep与sed命令结合的示例:</p><p>上面我们已经了解sed命令的特性，那我们现在就试试，它和grep命令的结合，究竟能撞出怎样的火花？</p><p>下面的命令实现的是：将某个目录以及子目录的所有文件中的关键字“ok”统一替换为“yes”</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/ok/yes/g&#x27;</span> `grep <span class="string">&quot;ok&quot;</span> -r -l --include=<span class="string">&quot;*&quot;</span> ./`</span><br></pre></td></tr></table></figure><p>上面 `` 括起来的grep命令，表示将grep命令查询的结果作为操作文件。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;grep查找命令&quot;&gt;&lt;a href=&quot;#grep查找命令&quot; class=&quot;headerlink&quot; title=&quot;grep查找命令&quot;&gt;&lt;/a&gt;grep查找命令&lt;/h4&gt;&lt;p&gt;grep命令是linux系统中，最常用的文件字符串查找命令，职业生涯中，我们几乎离不开它。&lt;</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="https://32e.co/categories/linux/"/>
-    
-    
-    <category term="查找关键字" scheme="https://32e.co/tags/%E6%9F%A5%E6%89%BE%E5%85%B3%E9%94%AE%E5%AD%97/"/>
-    
-    <category term="关键字替换" scheme="https://32e.co/tags/%E5%85%B3%E9%94%AE%E5%AD%97%E6%9B%BF%E6%8D%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用rsync同步服务器数据</title>
-    <link href="https://32e.co/2020/06/20/shell-rsync/"/>
-    <id>https://32e.co/2020/06/20/shell-rsync/</id>
-    <published>2020-06-20T04:34:44.000Z</published>
-    <updated>2020-07-27T01:55:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>rsync是一个快速和非常灵活的文件拷贝工具，增量拷贝工具。</p><p>rsync的使用方式与SCP差不多，但rsync相对SCP有更多的额外选项。通过rsync –help命令可以查看支持选项类型的完整列表和帮助信息。</p><p>rsync通常使用SSH或RSH与远程通信系统，它不需要设置，也不需要特殊的权限来安装。使用ssh是相对比较安全的，也是推荐的。</p><p>rsync守护进程方式启动是通过指定的选项–daemon来完成的，默认端口为873。rsync必须以root身份运行，因为它必须具有读取和写入数据、日志和锁定文件的权限。</p><h4 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h4><p>1，下载安装，直接到官网找到你需要下载的版本，复制下载地址，直接到服务器上使用wget下载安装</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz</span><br><span class="line"> </span><br><span class="line">tar -zxvf rsync-3.1.2.tar.gz</span><br><span class="line"> </span><br><span class="line"><span class="built_in">cd</span> rsync-3.1.2</span><br><span class="line"> </span><br><span class="line">./configure</span><br><span class="line"> </span><br><span class="line">make</span><br><span class="line"> </span><br><span class="line">make install</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>安装完成后，会把rsync命令文件路径输出，注意记下来，一般是/usr/local/bin目录，然后可以查看版本号来检查是否安装成功</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync --version</span><br></pre></td></tr></table></figure><p>2，配置文件</p><p>目前，rsync安装完成后，不会预设一些配置文件，相关的配置文件都需要自己去新建，关于配置文件的官方介绍地址：<br><a href="https://download.samba.org/pub/rsync/rsyncd.conf.html">https://download.samba.org/pub/rsync/rsyncd.conf.html</a></p><p>1),创建相关文件夹</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/rsync/conf</span><br><span class="line">mkdir -p /etc/rsync/<span class="built_in">log</span></span><br><span class="line">mkdir -p /etc/rsync/run</span><br></pre></td></tr></table></figure><p>2),创建rsyncd.secrets秘钥文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;root:pwd333&quot;</span> &gt;&gt; /etc/rsync/conf/rsyncd.secrets</span><br><span class="line">chmod 600 /etc/rsync/conf/rsyncd.secrets</span><br></pre></td></tr></table></figure><p>3),创建motd欢迎文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;-----------------rsync-----------------&quot;</span> &gt;&gt; /etc/rsync/conf/rsyncd.motd</span><br></pre></td></tr></table></figure><p>4)，创建rsyncd.conf主配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;uid = nobody</span></span><br><span class="line"><span class="string">gid = nobody</span></span><br><span class="line"><span class="string">use chroot = yes</span></span><br><span class="line"><span class="string">max connections = 100</span></span><br><span class="line"><span class="string">list = yes</span></span><br><span class="line"><span class="string">timeout = 300</span></span><br><span class="line"><span class="string">port = 873</span></span><br><span class="line"><span class="string">log file = /etc/rsync/log/rsync.log</span></span><br><span class="line"><span class="string">pid file = /etc/rsync/run/rsyncd.pid</span></span><br><span class="line"><span class="string">lock file = /etc/rsync/run/rsync.lock</span></span><br><span class="line"><span class="string">motd file = /etc/rsync/conf/rsyncd.motd</span></span><br><span class="line"><span class="string">secrets file = /etc/rsync/conf/rsyncd.secrets</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[test]</span></span><br><span class="line"><span class="string">path = /data/test</span></span><br><span class="line"><span class="string">comment = test rsync</span></span><br><span class="line"><span class="string">ignore errors </span></span><br><span class="line"><span class="string">auth users = root</span></span><br><span class="line"><span class="string">read only = no</span></span><br><span class="line"><span class="string">hosts allow = ssh.soilove.cn&quot;</span> &gt;&gt; /etc/rsync/conf/rsyncd.conf</span><br></pre></td></tr></table></figure><p>3，启动服务，重新启动，如果pid文件存在会提示错误，所以先删除文件再启动</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm /etc/rsync/run/rsyncd.pid</span><br><span class="line"> </span><br><span class="line">/usr/<span class="built_in">local</span>/bin/rsync --daemon --config=/etc/rsync/conf/rsyncd.conf</span><br></pre></td></tr></table></figure><p>4，在另一台服务器上也按照同样的步骤安装好rsync即可</p><h4 id="数据拷贝"><a href="#数据拷贝" class="headerlink" title="数据拷贝"></a>数据拷贝</h4><p>1，从远程服务器拉取数据：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vzrtopg --progress root@soilove.cn::<span class="built_in">test</span> /home/<span class="built_in">test</span></span><br></pre></td></tr></table></figure><p>输出：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[root@izuf65v28cpic4oqb2e45ez home]# rsync -vzrtopg –progress root@soilove.cn::test &#x2F;home&#x2F;test</span><br><span class="line">—————–rsync—————–</span><br><span class="line"></span><br><span class="line">Password:</span><br><span class="line">receiving incremental file list</span><br><span class="line">.&#x2F;</span><br><span class="line">a.txt</span><br><span class="line">2 100% 1.95kB&#x2F;s 0:00:00 (xfr#1, to-chk&#x3D;0&#x2F;2)</span><br><span class="line"></span><br><span class="line">sent 50 bytes received 119 bytes 37.56 bytes&#x2F;sec</span><br><span class="line">total size is 2 speedup is 0.01</span><br></pre></td></tr></table></figure><p>2，拉取数据时指定忽略文件,这里的指定的忽略文件是配置的/data/test的相对路径</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vzrtopg --progress --exclude=cc.txt root@soilove.cn::<span class="built_in">test</span> /home/<span class="built_in">test</span></span><br></pre></td></tr></table></figure><p>3，推送数据到远程服务器：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -vzrtopg --progress /home/<span class="built_in">test</span>/* root@soilove.cn::<span class="built_in">test</span></span><br></pre></td></tr></table></figure><p>官方文档：</p><p><a href="https://rsync.samba.org/">https://rsync.samba.org</a><br><a href="https://download.samba.org/pub/rsync/rsyncd.conf.html">https://download.samba.org/pub/rsync/rsyncd.conf.html</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h4&gt;&lt;p&gt;rsync是一个快速和非常灵活的文件拷贝工具，增量拷贝工具。&lt;/p&gt;
-&lt;p&gt;rsync的使用方式与SCP差不多，但rsync相对SCP有更多</summary>
-      
-    
-    
-    
-    <category term="linux" scheme="https://32e.co/categories/linux/"/>
-    
-    
-    <category term="工具" scheme="https://32e.co/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="数据同步" scheme="https://32e.co/tags/%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/"/>
-    
-    <category term="rsync" scheme="https://32e.co/tags/rsync/"/>
     
   </entry>
   
