@@ -1639,12 +1639,12 @@
     <url>/2020/10/01/redis-maxmemory-policy/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;作为一台服务器，它的内存肯定是上限的，Redis是内存数据库，同时提供了数据持久的能力，大量的数据保存在内存中，当内存空间达到瓶颈，超出了物理内存的上限时，就会导致内存操作频繁与磁盘进行交换，从而导致性能产生断崖式是下滑。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;内存中保存的数据，大量的Key应该都并不是有用的，所以淘汰它们，释放所占空间，可以极大的提供内存的可使用量。</p>
-<h4 id="内存淘汰设置"><a href="#内存淘汰设置" class="headerlink" title="内存淘汰设置"></a>内存淘汰设置</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的内存淘汰策略与<code>redis.conf</code>中配置的 <code>maxmemory</code>-最大内存设置 和 <code>maxmemory-policy</code>-淘汰策略设置 息息相关。</p>
-<h5 id="maxmemory"><a href="#maxmemory" class="headerlink" title="maxmemory"></a>maxmemory</h5><p>最大内存设置，默认是注释的，表示不做任何限制，单位是<code>byte</code>字节。如果内存超出这个最大限制，Redis会根据配置的淘汰策略删除其他的KEY。</p>
+<h4 id="内存淘汰设置"><a href="#内存淘汰设置" class="headerlink" title="内存淘汰设置"></a>内存淘汰设置</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的内存淘汰策略与<code>redis.conf</code>中配置的 <code>maxmemory</code>和 <code>maxmemory-policy</code>息息相关。</p>
+<h5 id="maxmemory-最大内存设置"><a href="#maxmemory-最大内存设置" class="headerlink" title="maxmemory(最大内存设置)"></a>maxmemory(最大内存设置)</h5><p>最大内存设置，默认是注释的，表示不做任何限制，单位是<code>byte</code>字节。如果内存超出这个最大限制，Redis会根据配置的淘汰策略删除其他的KEY。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">maxmemory &lt;bytes&gt;</span><br></pre></td></tr></table></figure>
 
 
-<h5 id="maxmemory-policy"><a href="#maxmemory-policy" class="headerlink" title="maxmemory-policy"></a>maxmemory-policy</h5><p>内存达到<code>maxmemory</code>上限的时候，触发的淘汰策略，默认使用的策略为：<code>noeviction</code>，即不做任何处理，这种情况，会直接提示写操作错误。</p>
+<h5 id="maxmemory-policy-内存淘汰策略"><a href="#maxmemory-policy-内存淘汰策略" class="headerlink" title="maxmemory-policy(内存淘汰策略)"></a>maxmemory-policy(内存淘汰策略)</h5><p>内存达到<code>maxmemory</code>上限的时候，触发的淘汰策略，默认使用的策略为：<code>noeviction</code>，即不做任何处理，这种情况，会直接提示写操作错误。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">maxmemory-policy &lt;策略&gt;</span><br></pre></td></tr></table></figure>
 <p>注意：无论配置的是什么策略，都有可能不满足，所以，当没有合适的Key被逐出时，Redis都会在写入时返回操作错误</p>
 <h4 id="支持的淘汰策略"><a href="#支持的淘汰策略" class="headerlink" title="支持的淘汰策略"></a>支持的淘汰策略</h4><table>
