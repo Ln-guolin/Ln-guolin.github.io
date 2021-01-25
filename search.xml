@@ -1557,15 +1557,15 @@
   <entry>
     <title>Redis精通之路-专栏目录</title>
     <url>/2020/10/01/redis-0-catalog/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写一些文章汇总到以前的博客里面。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，全部归纳在一起形成一个专栏，并取了一个名字：&lt;Redis精通之路&gt;[偷笑]</p>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写成一些文章汇总到以前的博客里面。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，并结合Redis官方文档，全部归纳在一起形成一个专栏，并取了一个名字：《Redis精通之路》[偷笑]</p>
 <h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul>
 <li><a href="">Redis精通之路-数据类型简介</a></li>
 <li><a href="">Redis精通之路-使用流水线加速查询</a></li>
 <li><a href="">Redis精通之路-发布与订阅</a></li>
 <li><a href="">Redis精通之路-Lua脚本编制</a></li>
 <li><a href="">Redis精通之路-内存优化</a></li>
-<li><a href="">Redis精通之路-Key的过期策略</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-expire">Redis精通之路-Key的过期策略</a></li>
 <li><a href="">Redis精通之路-淘汰策略</a></li>
 <li><a href="">Redis精通之路-Redis事务的原理</a></li>
 <li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li>
@@ -1602,6 +1602,36 @@
         <tag>缓存</tag>
         <tag>nosql</tag>
         <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis精通之路-Key的过期策略</title>
+    <url>/2020/10/01/redis-expire/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis可以通过<code>expire</code>/<code>pexpire</code>给每个Key设置不同的生存时间，超时到期后，Key将自动删除。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;只有<code>删除</code>或<code>覆盖</code>等相关命令才能清除这个超时设置，如：<code>del</code>、 <code>set</code>。当然，也可以通过<code>persist</code>命令移除Key的expire设置，将Key重新设置为永久有效。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Redis还提供了<code>rename</code>命令，可以将Key修改为其他名称，不过，这个操作仍然不会影响<code>expire</code>的设置。</p>
+<h4 id="过期信息的存储"><a href="#过期信息的存储" class="headerlink" title="过期信息的存储"></a>过期信息的存储</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Key过期信息是存储的<code>Unix绝对时间戳</code>（版本&gt;=2.6以<code>毫秒</code>为单位），<br>所以，过期时间的值与Redis服务是否在运行没有直接关系，与机器的系统时间有的直接关系，因为时间不会因为服务停止而停止向前。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这个机制也存在一个问题，如果你迁移RDB文件到其他的服务器上，而这两台服务器的系统时间相差较大，那么就会导致Key提前到期，或延迟到期。</p>
+<h4 id="过期密钥的方式"><a href="#过期密钥的方式" class="headerlink" title="过期密钥的方式"></a>过期密钥的方式</h4><p>Redis的Key有两种过期方式：</p>
+<ul>
+<li>被动方式</li>
+<li>主动方式</li>
+</ul>
+<h4 id="触发过期的时机"><a href="#触发过期的时机" class="headerlink" title="触发过期的时机"></a>触发过期的时机</h4><h5 id="1，被动方式："><a href="#1，被动方式：" class="headerlink" title="1，被动方式："></a><code>1，被动方式：</code></h5><p>&nbsp;&nbsp;&nbsp;&nbsp;仅当客户端尝试访问Key时，Key才会检测失效时间，从而被动失效。</p>
+<h5 id="2，主动方式："><a href="#2，主动方式：" class="headerlink" title="2，主动方式："></a><code>2，主动方式：</code></h5><p>&nbsp;&nbsp;&nbsp;&nbsp;因为有的Key可能永远不会再次访问，所以被动方式显然不能满足。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;因此Redis会定期对具有设置了<code>expire</code>的Key，进行随机的检测，检测到失效，就直接删除失效Key。</p>
+<p>具体实现逻辑：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Redis 每秒执行10次 的随机检测操作：</span><br><span class="line">     1，从一组设置了过期的密钥中随机选择20个Key</span><br><span class="line">     2，删除其中已经达到过期时间的Key</span><br><span class="line">     3，如果这一组key中有超过25％的密钥已过期，那么再次从&#96;步骤1&#96;开始执行</span><br></pre></td></tr></table></figure>
+<p>注：这个实现逻辑是一个概率算法，它假设我们随机取的这一组样本，可以代表整个Redis空间，持续不断的检测，直到可能过期的Key所占百分比低于25％。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+        <category>redis</category>
+      </categories>
+      <tags>
+        <tag>分布式缓存</tag>
+        <tag>缓存</tag>
+        <tag>nosql</tag>
       </tags>
   </entry>
 </search>
