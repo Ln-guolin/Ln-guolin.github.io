@@ -1431,7 +1431,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-使用Docker单机部署Redis</title>
+    <title>Redis登天之路-使用Docker单机部署Redis</title>
     <url>/2020/10/01/redis-docker-install/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;如果非要问怎么安装Redis最省心、最简单，那肯定要属<code>Docker</code>镜像安装了。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;docker hub镜像仓库中，有无数的开发者贡献了无数的镜像，可供选择，只需要一行docker命令，即可快速完成部署。不过要注意的是，最好选择带有<code>OFFICIAL IMAGE</code>标志的官方镜像，安全可靠！</p>
@@ -1469,7 +1469,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-单机部署Redis</title>
+    <title>Redis登天之路-单机部署Redis</title>
     <url>/2020/10/01/redis-sign-install/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>单机部署redis非常简单，只需要安装好对应的依赖，然后下载redis源代码，使用<code>make</code>命令，提取和编译Redis即可。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装环境：centos</span><br><span class="line"></span><br><span class="line">安装方式参考：https:&#x2F;&#x2F;redis.io&#x2F;download</span><br><span class="line"></span><br><span class="line">安装包下载地址：http:&#x2F;&#x2F;download.redis.io&#x2F;releases</span><br></pre></td></tr></table></figure>
@@ -1553,42 +1553,42 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-专栏目录</title>
+    <title>Redis登天之路-专栏目录</title>
     <url>/2020/10/01/redis-0-catalog/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis的一些笔记和相关知识点，还在2014年刚接触的时候，就开始写成一些文章汇总到以前的博客里面。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，并结合Redis官方文档的翻译，归纳在一起形成一个专栏《Redis精通之路》[偷笑]。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;长时间没有去整理，久而久之，就变得非常的 零散、杂乱，不利于查阅和总结。所以，也趁迁移博客的机会，重新将相关内容汇总梳理了一番，并结合Redis官方文档的翻译，归纳在一起形成一个专栏《Redis登天之路》[偷笑]。</p>
 <h4 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h4><ul>
-<li><a href="https://32e.co/2020/10/01/redis-data-types-intro">Redis精通之路-基本数据类型介绍</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-pipelining">Redis精通之路-使用管道加速请求</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-pub-sub">Redis精通之路-发布与订阅</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-lua-script">Redis精通之路-Lua脚本编制</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-memory-optimization">Redis精通之路-内存优化</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-expire">Redis精通之路-Key的过期策略</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-maxmemory-policy">Redis精通之路-内存淘汰策略</a></li>
-<li><a href="">Redis精通之路-Redis事务的原理</a></li>
-<li><a href="">Redis精通之路-批量插入数据的最佳实践</a></li>
-<li><a href="">Redis精通之路-分布式锁</a></li>
-<li><a href="">Redis精通之路-数据分区的实现</a></li>
-<li><a href="">Redis精通之路-内存碎片</a></li>
-<li><a href="">Redis精通之路-认识Redis Stream(流)</a></li>
-<li><a href="">Redis精通之路-键空间通知</a></li>
-<li><a href="">Redis精通之路-模块编程</a></li>
-<li><a href="">Redis精通之路-掌握Redis-cli命令行工具</a></li>
-<li><a href="">Redis精通之路-主副本复制的相关知识</a></li>
-<li><a href="">Redis精通之路-数据持久的两种方式</a></li>
-<li><a href="">Redis精通之路-安全性</a></li>
-<li><a href="">Redis精通之路-访问控制配置</a></li>
-<li><a href="">Redis精通之路-客户端与服务器的通信加密</a></li>
-<li><a href="">Redis精通之路-信号处理</a></li>
-<li><a href="">Redis精通之路-延迟监控框架</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis精通之路-单机部署Redis</a></li>
-<li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis精通之路-Docker部署Redis</a></li>
-<li><a href="">Redis精通之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li>
-<li><a href="">Redis精通之路-如何搭建Redis集群</a></li>
-<li><a href="">Redis精通之路-使用create-cluster脚本创建集群</a></li>
-<li><a href="">Redis精通之路-在Docker容器环境中搭建集群</a></li>
-<li><a href="">Redis精通之路-集群的主从模型和数据分片</a></li>
-<li><a href="">Redis精通之路-Redis群集一致性保证</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-data-types-intro">Redis登天之路-基本数据类型介绍</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-pipelining">Redis登天之路-使用管道加速请求</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-pub-sub">Redis登天之路-发布与订阅</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-lua-script">Redis登天之路-Lua脚本应用</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-memory-optimization">Redis登天之路-内存优化</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-expire">Redis登天之路-Key的过期策略</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-maxmemory-policy">Redis登天之路-内存淘汰策略</a></li>
+<li><a href="">Redis登天之路-Redis事务的原理</a></li>
+<li><a href="">Redis登天之路-批量插入数据的最佳实践</a></li>
+<li><a href="">Redis登天之路-分布式锁</a></li>
+<li><a href="">Redis登天之路-数据分区的实现</a></li>
+<li><a href="">Redis登天之路-内存碎片</a></li>
+<li><a href="">Redis登天之路-认识Redis Stream(流)</a></li>
+<li><a href="">Redis登天之路-键空间通知</a></li>
+<li><a href="">Redis登天之路-模块编程</a></li>
+<li><a href="">Redis登天之路-掌握Redis-cli命令行工具</a></li>
+<li><a href="">Redis登天之路-主副本复制的相关知识</a></li>
+<li><a href="">Redis登天之路-数据持久的两种方式</a></li>
+<li><a href="">Redis登天之路-安全性</a></li>
+<li><a href="">Redis登天之路-访问控制配置</a></li>
+<li><a href="">Redis登天之路-客户端与服务器的通信加密</a></li>
+<li><a href="">Redis登天之路-信号处理</a></li>
+<li><a href="">Redis登天之路-延迟监控框架</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-sign-install">Redis登天之路-单机部署Redis</a></li>
+<li><a href="https://32e.co/2020/10/01/redis-docker-install">Redis登天之路-Docker部署Redis</a></li>
+<li><a href="">Redis登天之路-高可用方案-哨兵模式(Redis-Sentinel)</a></li>
+<li><a href="">Redis登天之路-如何搭建Redis集群</a></li>
+<li><a href="">Redis登天之路-使用create-cluster脚本创建集群</a></li>
+<li><a href="">Redis登天之路-在Docker容器环境中搭建集群</a></li>
+<li><a href="">Redis登天之路-集群的主从模型和数据分片</a></li>
+<li><a href="">Redis登天之路-Redis群集一致性保证</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1602,7 +1602,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-Key的过期策略</title>
+    <title>Redis登天之路-Key的过期策略</title>
     <url>/2020/10/01/redis-expire/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis可以通过<code>expire</code>/<code>pexpire</code>给每个Key设置不同的生存时间，超时到期后，Key将自动删除。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;只有<code>删除</code>或<code>覆盖</code>等相关命令才能清除这个超时设置，如：<code>del</code>、 <code>set</code>。当然，也可以通过<code>persist</code>命令移除Key的expire设置，将Key重新设置为永久有效。</p>
@@ -1631,7 +1631,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-内存淘汰策略</title>
+    <title>Redis登天之路-内存淘汰策略</title>
     <url>/2020/10/01/redis-maxmemory-policy/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;作为一台服务器，它的内存肯定是有上限的，Redis是内存数据库，大量的数据保存在内存中，当内存空间达到瓶颈，超出了物理内存的上限时，就会导致内存操作频繁与磁盘进行交换，从而导致性能产生断崖式是下滑。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;内存中保存的数据，大量的Key应该都并不是有用的，所以淘汰它们，释放所占空间，可以极大的提供内存的可使用量。</p>
@@ -1699,7 +1699,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-基本数据类型介绍</title>
+    <title>Redis登天之路-基本数据类型介绍</title>
     <url>/2020/10/01/redis-data-types-intro/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Redis不仅仅是简单的键值对存储服务，它是一个支持 多种不同类型数据结构 数据的服务器。</p>
 <p>它目前支持的数据类型：</p>
@@ -1779,7 +1779,7 @@
 <li>对象属性信息</li>
 </ul>
 <h4 id="Bit-Array-位数组"><a href="#Bit-Array-位数组" class="headerlink" title="Bit Array(位数组)"></a>Bit Array(位数组)</h4><p>Bit Array不是实际的数据类型，而是在String类型上定义的一组面向位的操作，所以可以说它是String类型的一种扩展。</p>
-<p>由于字符串是二进制安全，并且最大长度为512 MB，因此它们适合设置多达 $2^{32}$ 个不同的字节。</p>
+<p>由于字符串是二进制安全，并且最大长度为512 MB，因此它们适合设置多达 2的32次方 个不同的字节。</p>
 <p>Bit Array就是一个长度可变的bit数组，每个位只能存储0或1。</p>
 <p>位操作分为两类：</p>
 <ul>
@@ -1841,7 +1841,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Redis精通之路-使用管道加速请求</title>
+    <title>Redis登天之路-使用管道加速请求</title>
     <url>/2020/10/01/redis-pipelining/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>大家都在说Redis很快！没错！非常快！但你真的感受到它的快了吗？尤其在高并发或极差网络环境的情况下，真的快了吗？你用对了吗？</p>
 <p>在讨论这些问题之前，我们需要先来了解一下什么是<code>RTT</code>，以及RTT带来的影响。</p>
