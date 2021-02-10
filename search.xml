@@ -1911,7 +1911,7 @@
 <p>发现多了一个root文件，<code>cat root</code>看了下内容：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*&#x2F;30 * * * * sh &#x2F;etc&#x2F;newinit.sh &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
 <p>任务内容：每30秒，运行一次/etc/newinit.sh脚本</p>
-<p>心想，那先干掉这个文件吧，<code>sudo rm -rf root</code>:权限不足！呵呵，不急，应该是被设置来锁定属性来，一会再来收拾它。</p>
+<p><code>sudo rm -rf root</code>:权限不足！呵呵，不急，应该是被设置来锁定属性来，一会再来收拾它。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rm -rf root</span><br><span class="line"></span><br><span class="line">输出：rm: cannot remove ‘root’: Permission denied</span><br></pre></td></tr></table></figure>
 <p>2，执行<code>/etc/newinit.sh</code>查看文件内容，卧槽，瞬间脸就绿了！TMD，各种授权、各种删、各种查杀和安装，文件属性也改了一堆。</p>
 <p>此子不能留！马上干掉它！然后再去看看要不要恢复其他被篡改的内容。</p>
