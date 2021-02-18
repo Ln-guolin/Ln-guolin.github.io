@@ -1094,7 +1094,7 @@
 <p>5，扩容</p>
 <p>无论是链表还是红黑树，我们的数组长度都只有16，所以总有用完的时候，那么我们就涉及到一<br>个扩容了，那么我们就要去了解下，什么时候扩容呢？如何扩容的呢？</p>
 <p>a，扩容因子</p>
-<p>什么时候开始扩容，这个问题，hashmap的开发者已经做了相应的设置，他定义了一个静态常量=0.75作为扩容因子，<br>当数组size()达到了总长度<em>075的时候，就进行扩容，比如：16</em>0.75=12，那么就表示当数组size()超过12的时候开始扩容</p>
+<p>什么时候开始扩容，这个问题，hashmap的开发者已经做了相应的设置，他定义了一个静态常量=0.75作为扩容因子，<br>当数组size()达到了<code>总长度*0.75</code>的时候，就进行扩容，比如：<code>16*0.75=12</code>，那么就表示当数组size()超过12的时候开始扩容</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The load factor used when none specified in constructor.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br><span class="line"></span><br><span class="line">newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br></pre></td></tr></table></figure>
 <p>扩容的步骤：<br>a，先计算一个新的数组的大小<br>b，创建一个新的数组，new<br>c，进行一个数据移动，old -&gt; new</p>
 <p>内容主要有3种共存的节点形式，逐个进行判断，然后转移，具体代码体现如下：<br>a，数组有元素，next无元素<br>b，数组有元素，next为链表<br>c，数组有元素，next为红黑树</p>
